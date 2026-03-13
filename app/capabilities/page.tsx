@@ -1,6 +1,7 @@
 import Navigation from '@/components/shared/Navigation';
 import Footer from '@/components/shared/Footer';
 import Link from 'next/link';
+import FAQSection from '@/components/FAQ/FAQSection';
 
 export default function CapabilitiesPage() {
   const capabilities = [
@@ -208,6 +209,8 @@ export default function CapabilitiesPage() {
           </div>
         </div>
       </section>
+
+      <FAQSection category="development" showHeader={false} />
 
       <Footer />
     </main>

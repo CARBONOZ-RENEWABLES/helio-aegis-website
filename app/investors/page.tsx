@@ -2,6 +2,7 @@
 
 import Navigation from '@/components/shared/Navigation';
 import Footer from '@/components/shared/Footer';
+import FAQSection from '@/components/FAQ/FAQSection';
 
 export default function InvestorsPage() {
   return (
@@ -309,6 +310,8 @@ export default function InvestorsPage() {
           </div>
         </div>
       </section>
+
+      <FAQSection category="investors" showHeader={false} />
 
       <Footer />
     </main>

@@ -3,6 +3,7 @@
 import Navigation from '@/components/shared/Navigation';
 import Footer from '@/components/shared/Footer';
 import { useState } from 'react';
+import FAQSection from '@/components/FAQ/FAQSection';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -295,6 +296,8 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      <FAQSection category="all" showHeader={false} />
 
       <Footer />
     </main>

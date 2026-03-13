@@ -10,6 +10,7 @@ import InvestmentThesis from '@/components/home/InvestmentThesis';
 import InsightsTeaser from '@/components/home/InsightsTeaser';
 import PartnersCredentials from '@/components/home/PartnersCredentials';
 import CTASection from '@/components/home/CTASection';
+import FAQSection from '@/components/FAQ/FAQSection';
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <InvestmentThesis />
       <InsightsTeaser />
       <PartnersCredentials />
+      <FAQSection category="all" showHeader={true} />
       <CTASection />
       <Footer />
     </main>
