@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Navigation from '@/components/shared/Navigation';
 import Footer from '@/components/shared/Footer';
-import InsightImage from '@/components/insights/InsightImage';
-import { insights, typeColors } from '@/components/insights/insightsData';
+import dbConnect from '@/lib/mongodb';
+import Insight from '@/models/Insight';
 
 interface InsightPageProps {
   params: {
@@ -12,7 +13,8 @@ interface InsightPageProps {
 }
 
 export async function generateMetadata({ params }: InsightPageProps): Promise<Metadata> {
-  const insight = insights.find((i) => i.id === parseInt(params.id));
+  await dbConnect();
+  const insight = await Insight.findOne({ slug: params.id, status: 'published' }).lean() as any;
 
   if (!insight) {
     return {
@@ -27,8 +29,9 @@ export async function generateMetadata({ params }: InsightPageProps): Promise<Me
   };
 }
 
-export default function InsightPage({ params }: InsightPageProps) {
-  const insight = insights.find((i) => i.id === parseInt(params.id));
+export default async function InsightPage({ params }: InsightPageProps) {
+  await dbConnect();
+  const insight = await Insight.findOne({ slug: params.id, status: 'published' }).lean();
 
   if (!insight) {
     return (
@@ -37,7 +40,7 @@ export default function InsightPage({ params }: InsightPageProps) {
         <main className="w-full bg-void min-h-screen flex items-center justify-center">
           <div className="text-center space-y-4">
             <h1 className="font-display text-4xl text-text-primary">Insight Not Found</h1>
-            <p className="text-text-secondary">The article you're looking for doesn't exist.</p>
+            <p className="text-text-secondary">The article you&apos;re looking for doesn&apos;t exist.</p>
             <Link href="/insights" className="text-solar hover:text-solar-dim transition-colors">
               Back to Insights →
             </Link>
@@ -48,15 +51,24 @@ export default function InsightPage({ params }: InsightPageProps) {
     );
   }
 
-  const relatedInsights = insights
-    .filter((i) => i.id !== insight.id && i.category === insight.category)
-    .slice(0, 3);
+  const insightData: any = insight;
+  const relatedInsights = await Insight.find({
+    _id: { $ne: (insight as any)?._id },
+    category: (insight as any)?.category,
+    status: 'published'
+  }).limit(3).lean();
+
+  const typeColors: Record<string, string> = {
+    Research: 'bg-hydrogen/20 text-hydrogen border-hydrogen/40',
+    Commentary: 'bg-solar/20 text-solar border-solar/40',
+    Report: 'bg-growth/20 text-growth border-growth/40',
+  };
 
   return (
     <>
       <Navigation />
       <main className="w-full bg-void">
-        {/* Hero Section with Featured Image */}
+        {/* Hero Section */}
         <section className="relative pt-20 pb-12 overflow-hidden">
           <div className="absolute inset-0 grid-texture opacity-10" />
 
@@ -67,7 +79,7 @@ export default function InsightPage({ params }: InsightPageProps) {
                 Insights
               </Link>
               <span className="text-text-muted">/</span>
-              <span className="text-text-primary">{insight.title}</span>
+              <span className="text-text-primary">{insightData.title}</span>
             </div>
 
             {/* Header */}
@@ -75,45 +87,52 @@ export default function InsightPage({ params }: InsightPageProps) {
               <div className="flex items-center gap-3">
                 <div
                   className={`inline-flex px-3 py-1 rounded-sm text-xs font-semibold border ${
-                    typeColors[insight.type]
+                    typeColors[insightData.type]
                   }`}
                 >
-                  {insight.type}
+                  {insightData.type}
                 </div>
                 <span className="text-xs text-text-muted bg-white/5 px-2 py-1 rounded-sm">
-                  {insight.category}
+                  {insightData.category}
                 </span>
               </div>
 
               <h1 className="font-display text-5xl md:text-6xl leading-tight text-text-primary">
-                {insight.title}
+                {insightData.title}
               </h1>
 
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 pt-4 border-t border-white/[0.08]">
                 <div className="space-y-2">
                   <p className="text-sm text-text-secondary">
-                    By <span className="font-semibold">{insight.author}</span>
+                    By <span className="font-semibold">{insightData.author || 'Helio Aegis Team'}</span>
                   </p>
-                  <p className="text-xs text-text-muted">{insight.authorRole}</p>
+                  {insightData.authorRole && (
+                    <p className="text-xs text-text-muted">{insightData.authorRole}</p>
+                  )}
                 </div>
                 <div className="flex items-center gap-6 text-sm text-text-muted">
-                  <span>{insight.date}</span>
-                  <span>{insight.readTime}</span>
+                  <span>
+                    {new Date(insightData.publishedAt || insightData.createdAt).toLocaleDateString('en-US', {
+                      month: 'short',
+                      day: 'numeric',
+                      year: 'numeric'
+                    })}
+                  </span>
+                  <span>{insightData.readTime || '5 min read'}</span>
                 </div>
               </div>
             </div>
 
             {/* Featured Image */}
-            <div className="max-w-4xl mb-12">
-              <InsightImage
-                src={insight.featuredImage.src}
-                alt={insight.featuredImage.alt}
-                caption={insight.featuredImage.caption}
-                className="w-full h-96 md:h-[500px] rounded-lg"
-                priority
-              />
-              <p className="text-sm text-text-muted mt-3">{insight.featuredImage.caption}</p>
-            </div>
+            {insightData.featuredImage && (
+              <div className="max-w-4xl mb-12">
+                <img
+                  src={insightData.featuredImage}
+                  alt={insightData.title}
+                  className="w-full h-96 md:h-[500px] rounded-lg object-cover"
+                />
+              </div>
+            )}
           </div>
         </section>
 
@@ -122,54 +141,43 @@ export default function InsightPage({ params }: InsightPageProps) {
           <div className="container-custom max-w-4xl">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
               {/* Main Content */}
-              <div className="lg:col-span-2 space-y-12">
-                {insight.sections.map((section, idx) => (
-                  <div key={idx} className="space-y-6">
-                    <h2 className="font-display text-3xl text-text-primary">{section.heading}</h2>
-
-                    <p className="text-lg text-text-secondary leading-relaxed">{section.content}</p>
-
-                    {section.image && (
-                      <div className="space-y-3">
-                        <InsightImage
-                          src={section.image.src}
-                          alt={section.image.alt}
-                          caption={section.image.caption}
-                          className="w-full h-80 rounded-lg"
-                        />
-                        <p className="text-sm text-text-muted">{section.image.caption}</p>
-                      </div>
-                    )}
-                  </div>
-                ))}
+              <div className="lg:col-span-2 space-y-6">
+                <div className="prose prose-invert max-w-none">
+                  <p className="text-lg text-text-secondary leading-relaxed whitespace-pre-wrap">
+                    {insightData.content}
+                  </p>
+                </div>
               </div>
 
               {/* Sidebar */}
               <div className="lg:col-span-1 space-y-8">
                 {/* Key Takeaways */}
-                <div className="card p-6 space-y-4 sticky top-20">
-                  <h3 className="font-display text-xl text-text-primary">Key Takeaways</h3>
-                  <ul className="space-y-3">
-                    {insight.keyTakeaways.map((takeaway, idx) => (
-                      <li key={idx} className="flex gap-3">
-                        <span className="text-solar flex-shrink-0 mt-1">✓</span>
-                        <span className="text-sm text-text-secondary leading-relaxed">{takeaway}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                {insightData.keyTakeaways && insightData.keyTakeaways.length > 0 && (
+                  <div className="card p-6 space-y-4 sticky top-20">
+                    <h3 className="font-display text-xl text-text-primary">Key Takeaways</h3>
+                    <ul className="space-y-3">
+                      {insightData.keyTakeaways.map((takeaway: string, idx: number) => (
+                        <li key={idx} className="flex gap-3">
+                          <span className="text-solar flex-shrink-0 mt-1">✓</span>
+                          <span className="text-sm text-text-secondary leading-relaxed">{takeaway}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
                 {/* Author Card */}
-                <div className="card p-6 space-y-4">
-                  <h3 className="font-display text-lg text-text-primary">About the Author</h3>
-                  <div className="space-y-2">
-                    <p className="font-semibold text-text-primary">{insight.author}</p>
-                    <p className="text-sm text-text-secondary">{insight.authorRole}</p>
+                {insightData.author && (
+                  <div className="card p-6 space-y-4">
+                    <h3 className="font-display text-lg text-text-primary">About the Author</h3>
+                    <div className="space-y-2">
+                      <p className="font-semibold text-text-primary">{insightData.author}</p>
+                      {insightData.authorRole && (
+                        <p className="text-sm text-text-secondary">{insightData.authorRole}</p>
+                      )}
+                    </div>
                   </div>
-                  <p className="text-sm text-text-muted leading-relaxed">
-                    Expert in renewable energy finance and project development with 15+ years of industry experience.
-                  </p>
-                </div>
+                )}
               </div>
             </div>
           </div>
@@ -182,10 +190,10 @@ export default function InsightPage({ params }: InsightPageProps) {
               <h2 className="font-display text-3xl text-text-primary mb-12">Related Insights</h2>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {relatedInsights.map((related) => (
+                {relatedInsights.map((related: any) => (
                   <Link
-                    key={related.id}
-                    href={`/insights/${related.id}`}
+                    key={related._id.toString()}
+                    href={`/insights/${related.slug}`}
                     className="card p-6 flex flex-col space-y-4 group hover:border-solar/40 transition-all duration-300"
                   >
                     <div
@@ -196,18 +204,24 @@ export default function InsightPage({ params }: InsightPageProps) {
                       {related.type}
                     </div>
 
-                    <p className="text-xs text-text-muted font-mono">{related.date}</p>
+                    <p className="text-xs text-text-muted font-mono">
+                      {new Date(related.publishedAt || related.createdAt).toLocaleDateString('en-US', {
+                        month: 'short',
+                        day: 'numeric',
+                        year: 'numeric'
+                      })}
+                    </p>
 
                     <h3 className="font-display text-lg text-text-primary group-hover:text-solar transition-colors">
                       {related.title}
                     </h3>
 
-                    <p className="text-text-secondary text-sm leading-relaxed flex-grow">
+                    <p className="text-text-secondary text-sm leading-relaxed flex-grow line-clamp-3">
                       {related.excerpt}
                     </p>
 
                     <div className="flex items-center justify-between pt-4 border-t border-white/[0.08]">
-                      <span className="text-xs text-text-muted">{related.readTime}</span>
+                      <span className="text-xs text-text-muted">{related.readTime || '5 min read'}</span>
                       <span className="text-solar font-semibold text-sm">Read →</span>
                     </div>
                   </Link>

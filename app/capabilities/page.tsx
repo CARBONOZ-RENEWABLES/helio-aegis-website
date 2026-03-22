@@ -1,9 +1,14 @@
 import Navigation from '@/components/shared/Navigation';
 import Footer from '@/components/shared/Footer';
 import Link from 'next/link';
-import FAQSection from '@/components/FAQ/FAQSection';
+import FAQSectionClient from '@/components/FAQ/FAQSectionClient';
+import dbConnect from '@/lib/mongodb';
+import FAQ from '@/models/FAQ';
 
-export default function CapabilitiesPage() {
+export default async function CapabilitiesPage() {
+  await dbConnect();
+  const faqs = await FAQ.find({ status: 'published' }).sort({ category: 1, order: 1 }).lean();
+
   const capabilities = [
     {
       title: 'Project Development',
@@ -210,7 +215,7 @@ export default function CapabilitiesPage() {
         </div>
       </section>
 
-      <FAQSection category="development" showHeader={false} />
+      <FAQSectionClient faqs={JSON.parse(JSON.stringify(faqs))} category="development" showHeader={false} />
 
       <Footer />
     </main>

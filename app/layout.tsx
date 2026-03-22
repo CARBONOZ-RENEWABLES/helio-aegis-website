@@ -33,7 +33,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${playfair.variable} ${dmSans.variable} ${jetbrains.variable}`}>
-      <body className="font-body">{children}</body>
+      <body className="font-body overflow-x-hidden">{children}</body>
     </html>
   )
 }

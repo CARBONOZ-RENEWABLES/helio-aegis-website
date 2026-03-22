@@ -3,84 +3,52 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 
-const marketData = [
-  {
-    symbol: 'SPOT',
-    label: 'Solar PV',
-    value: '$0.028',
-    unit: '/kWh',
-    change: '+2.4%',
-    trend: 'up',
-    color: 'text-growth',
-  },
-  {
-    symbol: 'WIND',
-    label: 'Onshore Wind',
-    value: '$0.031',
-    unit: '/kWh',
-    change: '+1.8%',
-    trend: 'up',
-    color: 'text-hydrogen',
-  },
-  {
-    symbol: 'BESS',
-    label: 'Battery Storage',
-    value: '$280',
-    unit: '/kWh',
-    change: '-0.5%',
-    trend: 'down',
-    color: 'text-solar',
-  },
-  {
-    symbol: 'US10Y',
-    label: 'US 10Y Treasury',
-    value: '4.62',
-    unit: '%',
-    change: '+0.12%',
-    trend: 'up',
-    color: 'text-text-secondary',
-  },
-  {
-    symbol: 'IEX',
-    label: 'Green Power Index',
-    value: '+2.4',
-    unit: '%',
-    change: '+0.8%',
-    trend: 'up',
-    color: 'text-growth',
-  },
-  {
-    symbol: 'ETS',
-    label: 'Carbon Credits',
-    value: '€72.40',
-    unit: '',
-    change: '+1.2%',
-    trend: 'up',
-    color: 'text-solar',
-  },
-  {
-    symbol: 'BRENT',
-    label: 'Brent Crude',
-    value: '$78.20',
-    unit: '/bbl',
-    change: '-0.3%',
-    trend: 'down',
-    color: 'text-text-secondary',
-  },
-  {
-    symbol: 'NATGAS',
-    label: 'Natural Gas',
-    value: '$3.12',
-    unit: '/MMBtu',
-    change: '+0.5%',
-    trend: 'up',
-    color: 'text-hydrogen',
-  },
-];
-
 export default function MarketTicker() {
   const [isPaused, setIsPaused] = useState(false);
-  const [selectedData, setSelectedData] = useState(marketData[0]);
+  const [marketData, setMarketData] = useState<any[]>([]);
+  const [selectedData, setSelectedData] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  const [isLiveData, setIsLiveData] = useState(false);
+  const [lastUpdate, setLastUpdate] = useState<Date | null>(null);
+
+  useEffect(() => {
+    fetchMarketData();
+    const interval = setInterval(fetchMarketData, 60000); // Update every 60 seconds
+    return () => clearInterval(interval);
+  }, []);
+
+  const fetchMarketData = async () => {
+    try {
+      const response = await fetch('/api/market-data');
+      const data = await response.json();
+      
+      // Check if response includes metadata about data source
+      if (response.headers.get('X-Data-Source') === 'live') {
+        setIsLiveData(true);
+      } else {
+        setIsLiveData(false);
+      }
+      
+      setMarketData(data);
+      setLastUpdate(new Date());
+      if (!selectedData && data.length > 0) {
+        setSelectedData(data[0]);
+      }
+      setLoading(false);
+    } catch (error) {
+      console.error('Failed to fetch market data:', error);
+      setIsLiveData(false);
+      setLoading(false);
+    }
+  };
+
+  if (loading || marketData.length === 0) {
+    return (
+      <div className="w-full bg-gradient-to-r from-slate-dark via-void to-slate-dark border-y border-white/[0.08] py-12">
+        <div className="container-custom text-center text-text-muted">Loading market data...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full bg-gradient-to-r from-slate-dark via-void to-slate-dark border-y border-white/[0.08] overflow-hidden">
@@ -90,15 +58,26 @@ export default function MarketTicker() {
           <div className="flex items-center space-x-3">
             <div className="flex items-center space-x-2">
               <motion.div
-                className="w-2 h-2 bg-growth rounded-full"
+                className={`w-2 h-2 rounded-full ${
+                  isLiveData ? 'bg-growth' : 'bg-solar'
+                }`}
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
               />
-              <span className="text-xs font-mono text-growth font-semibold uppercase tracking-widest">
-                Live Market Data
+              <span className={`text-xs font-mono font-semibold uppercase tracking-widest ${
+                isLiveData ? 'text-growth' : 'text-solar'
+              }`}>
+                {isLiveData ? 'Live API Data' : 'Demo Data'}
               </span>
             </div>
-            <span className="text-xs text-text-muted">Updated every 60 seconds</span>
+            <span className="text-xs text-text-muted">
+              {lastUpdate ? `Updated ${lastUpdate.toLocaleTimeString()}` : 'Loading...'}
+            </span>
+            {!isLiveData && (
+              <span className="text-xs px-2 py-1 bg-solar/20 text-solar rounded-sm">
+                Configure API key in admin
+              </span>
+            )}
           </div>
           <button
             onClick={() => setIsPaused(!isPaused)}

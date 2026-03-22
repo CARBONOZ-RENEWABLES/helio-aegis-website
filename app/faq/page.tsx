@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Script from 'next/script';
-import FAQSection from '@/components/FAQ/FAQSection';
+import FAQSectionServer from '@/components/FAQ/FAQSectionServer';
 import { generateFAQSchema } from '@/components/FAQ/faqSchema';
 import Navigation from '@/components/shared/Navigation';
 import Footer from '@/components/shared/Footer';
@@ -22,7 +22,7 @@ export default function FAQPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
       <Navigation />
-      <FAQSection category="all" showHeader={true} />
+      <FAQSectionServer category="all" showHeader={true} />
       <Footer />
     </>
   );

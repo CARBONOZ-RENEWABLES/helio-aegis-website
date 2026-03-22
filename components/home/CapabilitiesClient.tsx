@@ -4,34 +4,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useInView } from 'react-intersection-observer';
 
-const capabilities = [
-  {
-    title: 'Project Development',
-    icon: '📋',
-    description: 'From origination to COD, we manage the full lifecycle of complex renewable projects.',
-    href: '/capabilities/project-development',
-  },
-  {
-    title: 'Energy Finance',
-    icon: '📊',
-    description: 'Structuring deals from $50M to $2B+ across all vehicle types and capital sources.',
-    href: '/capabilities/energy-finance',
-  },
-  {
-    title: 'Asset Management',
-    icon: '🔗',
-    description: 'Post-COD portfolio optimization and performance management for stabilized assets.',
-    href: '/capabilities/asset-management',
-  },
-  {
-    title: 'Technology',
-    icon: '⚡',
-    description: 'Agnostic across Solar, Wind, BESS, and Green Hydrogen platforms.',
-    href: '/capabilities/technology',
-  },
-];
-
-export default function Capabilities() {
+export default function CapabilitiesClient({ data }: any) {
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
 
   return (
@@ -46,15 +19,13 @@ export default function Capabilities() {
             className="flex flex-col justify-center space-y-6"
           >
             <div className="eyebrow">What We Do</div>
-            <h2 className="font-display text-3xl md:text-4xl leading-tight text-text-primary">
-              Two Disciplines.
-              <br />
-              One Platform.
+            <h2 className="font-display text-3xl md:text-4xl leading-tight tracking-tight">
+              <span className="bg-gradient-to-r from-solar via-solar to-hydrogen bg-clip-text text-transparent whitespace-pre-line">
+                {data.sectionTitle}
+              </span>
             </h2>
             <p className="text-lg text-text-secondary leading-relaxed">
-              Our integrated project management and energy finance model creates superior
-              risk-adjusted returns for institutional capital. We combine deep sector expertise
-              with proprietary technology to execute complex transactions at scale.
+              {data.sectionDescription}
             </p>
             <Link
               href="/capabilities"
@@ -72,7 +43,7 @@ export default function Capabilities() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="grid grid-cols-1 md:grid-cols-2 gap-6"
           >
-            {capabilities.map((cap, idx) => (
+            {data.capabilities.map((cap: any, idx: number) => (
               <div
                 key={idx}
                 className="card p-8 flex flex-col space-y-4 group cursor-pointer hover:border-solar/40 transition-all duration-300"

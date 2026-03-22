@@ -4,15 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import CountUp from '@/components/ui/CountUp';
 
-const metrics = [
-  { value: 12.4, suffix: 'B', prefix: '$', label: 'Capital Deployed' },
-  { value: 18.2, suffix: ' GW', label: 'Capacity Managed' },
-  { value: 340, suffix: '+', label: 'Projects Closed' },
-  { value: 2.8, suffix: 'M', label: 'Homes Powered' },
-  { value: 96, suffix: '%', label: 'On-Time Delivery' },
-];
-
-export default function PortfolioImpact() {
+export default function PortfolioImpactClient({ data }: any) {
   const { ref, inView } = useInView({ threshold: 0.2, triggerOnce: true });
 
   return (
@@ -38,11 +30,13 @@ export default function PortfolioImpact() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="font-display text-3xl md:text-4xl text-text-primary mb-4">
-            Scale built on executed deals.
+          <h2 className="font-display text-3xl md:text-4xl leading-tight tracking-tight">
+            <span className="bg-gradient-to-r from-solar via-solar to-hydrogen bg-clip-text text-transparent">
+              {data?.sectionTitle || 'Scale built on executed deals.'}
+            </span>
           </h2>
           <p className="text-lg text-text-secondary max-w-2xl mx-auto">
-            Since 2012, Helio Aegis has structured and delivered:
+            {data?.sectionSubtitle || 'Since 2012, Helio Aegis has structured and delivered:'}
           </p>
         </motion.div>
 
@@ -53,7 +47,7 @@ export default function PortfolioImpact() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-8"
         >
-          {metrics.map((metric, idx) => (
+          {data?.metrics?.map((metric: any, idx: number) => (
             <div key={idx} className="text-center">
               <div className="metric-value mb-2">
                 <CountUp

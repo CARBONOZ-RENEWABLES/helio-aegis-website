@@ -1,30 +1,33 @@
 'use client';
 
-import { useState, useMemo } from 'react';
-import { faqItems, FAQItem } from './faqData';
+import { useState, useMemo, useEffect } from 'react';
 
 interface FAQSearchProps {
-  onSearch: (results: FAQItem[]) => void;
+  faqs: any[];
+  onSearch: (results: any[]) => void;
 }
 
-export default function FAQSearch({ onSearch }: FAQSearchProps) {
+export default function FAQSearch({ faqs, onSearch }: FAQSearchProps) {
   const [query, setQuery] = useState('');
 
   const results = useMemo(() => {
-    if (!query.trim()) return faqItems;
+    if (!query.trim()) return faqs;
 
     const lowerQuery = query.toLowerCase();
-    return faqItems.filter(
+    return faqs.filter(
       (item) =>
         item.question.toLowerCase().includes(lowerQuery) ||
         item.answer.toLowerCase().includes(lowerQuery) ||
         item.category.toLowerCase().includes(lowerQuery)
     );
-  }, [query]);
+  }, [query, faqs]);
+
+  useEffect(() => {
+    onSearch(results);
+  }, [results, onSearch]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
-    onSearch(results);
   };
 
   return (
@@ -49,7 +52,7 @@ export default function FAQSearch({ onSearch }: FAQSearchProps) {
 
       {query && results.length === 0 && (
         <div className="mt-6 p-6 bg-slate-dark border border-white/7 rounded-lg text-center">
-          <p className="text-text-secondary mb-3">No results found for "{query}"</p>
+          <p className="text-text-secondary mb-3">No results found for &quot;{query}&quot;</p>
           <a
             href="mailto:info@helioaegis.com"
             className="inline-flex items-center space-x-2 text-solar hover:text-solar-dim transition-colors"

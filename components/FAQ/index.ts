@@ -1,4 +1,5 @@
-export { default as FAQSection } from './FAQSection';
+export { default as FAQSectionServer } from './FAQSectionServer';
+export { default as FAQSectionClient } from './FAQSectionClient';
 export { default as FAQSearch } from './FAQSearch';
 export { default as FAQTabs } from './FAQTabs';
 export { default as FAQAccordion } from './FAQAccordion';

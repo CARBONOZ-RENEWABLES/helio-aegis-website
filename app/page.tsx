@@ -2,15 +2,15 @@ import Navigation from '@/components/shared/Navigation';
 import Footer from '@/components/shared/Footer';
 import Hero from '@/components/home/Hero';
 import MarketTicker from '@/components/home/MarketTicker';
-import Capabilities from '@/components/home/Capabilities';
-import PortfolioImpact from '@/components/home/PortfolioImpact';
+import CapabilitiesServer from '@/components/home/CapabilitiesServer';
+import PortfolioImpact from '@/components/home/PortfolioImpactServer';
 import FeaturedProjects from '@/components/home/FeaturedProjects';
 import ProjectMap from '@/components/home/ProjectMap';
 import InvestmentThesis from '@/components/home/InvestmentThesis';
 import InsightsTeaser from '@/components/home/InsightsTeaser';
 import PartnersCredentials from '@/components/home/PartnersCredentials';
 import CTASection from '@/components/home/CTASection';
-import FAQSection from '@/components/FAQ/FAQSection';
+import FAQSection from '@/components/FAQ/FAQSectionServer';
 
 export default function Home() {
   return (
@@ -18,7 +18,7 @@ export default function Home() {
       <Navigation />
       <Hero />
       <MarketTicker />
-      <Capabilities />
+      <CapabilitiesServer />
       <PortfolioImpact />
       <FeaturedProjects />
       <ProjectMap />
