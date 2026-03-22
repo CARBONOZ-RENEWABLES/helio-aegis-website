@@ -1,4 +1,4 @@
-import dbConnect from '@/lib/mongodb';
+import dbConnect, { DEMO_MODE } from '@/lib/mongodb';
 import Homepage from '@/models/Homepage';
 import CTASectionClient from './CTASectionClient';
 
@@ -16,8 +16,8 @@ const defaultCTAData = {
 
 export default async function CTASectionServer() {
   try {
-    await dbConnect();
-    const homepage: any = await Homepage.findOne({}).lean();
+    if (!DEMO_MODE) { await dbConnect(); }
+    const homepage: any = DEMO_MODE ? null : await Homepage.findOne({}).lean();
     
     const ctaData = {
       headline: homepage?.finalCTA?.headline || defaultCTAData.headline,

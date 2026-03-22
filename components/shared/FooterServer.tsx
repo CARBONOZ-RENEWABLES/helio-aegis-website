@@ -1,10 +1,13 @@
-import dbConnect from '@/lib/mongodb';
+import dbConnect, { DEMO_MODE } from '@/lib/mongodb';
 import Footer from '@/models/Footer';
 import FooterClient from './FooterClient';
 
 export default async function FooterServer() {
-  await dbConnect();
-  const footerData = await Footer.findOne({}).lean();
+  if (!DEMO_MODE) {
+    if (!DEMO_MODE) { await dbConnect(); }
+  }
+  
+  const footerData = DEMO_MODE ? null : await Footer.findOne({}).lean();
 
   const defaultData = {
     newsletter: {

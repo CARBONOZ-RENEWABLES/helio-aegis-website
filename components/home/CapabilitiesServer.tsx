@@ -1,11 +1,14 @@
-import dbConnect from '@/lib/mongodb';
+import dbConnect, { DEMO_MODE } from '@/lib/mongodb';
 import Capabilities from '@/models/Capabilities';
 import CapabilitiesClient from './CapabilitiesClient';
+import { demoCapabilities } from '@/lib/demo-data';
 
 export default async function CapabilitiesServer() {
-  await dbConnect();
+  if (!DEMO_MODE) {
+    if (!DEMO_MODE) { await dbConnect(); }
+  }
   
-  let data: any = await Capabilities.findOne().lean();
+  let data: any = DEMO_MODE ? demoCapabilities : await Capabilities.findOne().lean();
   
   if (!data) {
     data = {
