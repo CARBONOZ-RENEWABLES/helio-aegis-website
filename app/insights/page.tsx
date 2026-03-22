@@ -3,72 +3,9 @@
 import Navigation from '@/components/shared/Navigation';
 import Footer from '@/components/shared/Footer';
 import Link from 'next/link';
+import { insights, typeColors } from '@/components/insights/insightsData';
 
 export default function InsightsPage() {
-  const insights = [
-    {
-      id: 1,
-      type: 'Research',
-      date: 'Jan 15, 2025',
-      title: 'The 2025 Renewable Energy Finance Outlook',
-      excerpt:
-        'Capital deployment trends, interest rate impacts, and emerging opportunities in clean energy infrastructure.',
-      readTime: '12 min read',
-      featured: true,
-      category: 'Market Analysis',
-    },
-    {
-      id: 2,
-      type: 'Commentary',
-      date: 'Jan 12, 2025',
-      title: 'IRA Extension: What It Means for Project Economics',
-      excerpt:
-        'Analysis of the extended Investment Tax Credit and its impact on utility-scale solar and wind returns.',
-      readTime: '8 min read',
-      category: 'Policy',
-    },
-    {
-      id: 3,
-      type: 'Report',
-      date: 'Jan 10, 2025',
-      title: 'Global Green Hydrogen Market Report',
-      excerpt:
-        'Comprehensive market sizing, cost curves, and investment opportunities in emerging hydrogen infrastructure.',
-      readTime: '18 min read',
-      category: 'Technology',
-    },
-    {
-      id: 4,
-      type: 'Commentary',
-      date: 'Jan 8, 2025',
-      title: 'European Grid Constraints: Opportunities for Storage',
-      excerpt:
-        'How transmission bottlenecks are creating attractive economics for battery storage deployment.',
-      readTime: '10 min read',
-      category: 'Market Analysis',
-    },
-    {
-      id: 5,
-      type: 'Research',
-      date: 'Jan 5, 2025',
-      title: 'Offshore Wind Cost Curve Evolution',
-      excerpt:
-        'Analyzing the trajectory of offshore wind capex and how it impacts project returns.',
-      readTime: '14 min read',
-      category: 'Technology',
-    },
-    {
-      id: 6,
-      type: 'Report',
-      date: 'Dec 28, 2024',
-      title: 'MENA Renewable Energy Investment Guide',
-      excerpt:
-        'Market overview, regulatory landscape, and investment opportunities across the Middle East and North Africa.',
-      readTime: '20 min read',
-      category: 'Regional',
-    },
-  ];
-
   const typeColors = {
     Research: 'bg-hydrogen/20 text-hydrogen border-hydrogen/40',
     Commentary: 'bg-solar/20 text-solar border-solar/40',

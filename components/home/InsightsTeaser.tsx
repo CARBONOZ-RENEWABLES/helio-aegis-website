@@ -3,43 +3,13 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Link from 'next/link';
-
-const insights = [
-  {
-    id: 1,
-    type: 'Research',
-    date: 'Jan 15, 2025',
-    title: 'The 2025 Renewable Energy Finance Outlook',
-    excerpt: 'Capital deployment trends, interest rate impacts, and emerging opportunities in clean energy infrastructure.',
-    readTime: '12 min read',
-    featured: true,
-  },
-  {
-    id: 2,
-    type: 'Commentary',
-    date: 'Jan 12, 2025',
-    title: 'IRA Extension: What It Means for Project Economics',
-    excerpt: 'Analysis of the extended Investment Tax Credit and its impact on utility-scale solar and wind returns.',
-    readTime: '8 min read',
-  },
-  {
-    id: 3,
-    type: 'Report',
-    date: 'Jan 10, 2025',
-    title: 'Global Green Hydrogen Market Report',
-    excerpt: 'Comprehensive market sizing, cost curves, and investment opportunities in emerging hydrogen infrastructure.',
-    readTime: '18 min read',
-  },
-];
-
-const typeColors = {
-  Research: 'bg-hydrogen/20 text-hydrogen border-hydrogen/40',
-  Commentary: 'bg-solar/20 text-solar border-solar/40',
-  Report: 'bg-growth/20 text-growth border-growth/40',
-};
+import { insights, typeColors } from '@/components/insights/insightsData';
 
 export default function InsightsTeaser() {
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
+  
+  // Get first 3 insights for teaser
+  const teaserInsights = insights.slice(0, 3);
 
   return (
     <section ref={ref} className="section-padding bg-void">
@@ -66,7 +36,7 @@ export default function InsightsTeaser() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-6"
         >
-          {insights.map((insight) => (
+          {teaserInsights.map((insight) => (
             <div
               key={insight.id}
               className={`card p-6 flex flex-col space-y-4 group hover:border-solar/40 transition-all duration-300 ${
