@@ -1,11 +1,14 @@
-import dbConnect from '@/lib/mongodb';
+import dbConnect, { DEMO_MODE } from '@/lib/mongodb';
 import Project from '@/models/Project';
 import FeaturedProjectsClient from './FeaturedProjectsClient';
+import { demoProjects } from '@/lib/demo-data';
 
 export default async function FeaturedProjects() {
-  await dbConnect();
+  if (!DEMO_MODE) {
+    await dbConnect();
+  }
   
-  const projects = await Project.find({ 
+  const projects = DEMO_MODE ? demoProjects : await Project.find({ 
     status: 'published',
     'basicInfo.featured': true 
   })
@@ -13,7 +16,7 @@ export default async function FeaturedProjects() {
     .limit(4)
     .lean();
 
-  const serializedProjects = projects.map((project: any) => ({
+  const serializedProjects = DEMO_MODE ? projects : projects.map((project: any) => ({
     id: project._id.toString(),
     slug: project.slug,
     name: project.basicInfo?.name || 'Untitled',

@@ -111,36 +111,33 @@ export const demoMetrics = {
 
 export const demoProjects = [
   {
-    _id: '1',
-    name: 'Solaris Valley Solar Farm',
+    id: '1',
     slug: 'solaris-valley-solar',
+    name: 'Solaris Valley Solar Farm',
     location: 'California, USA',
-    capacity: 250,
-    technology: 'Solar PV',
-    status: 'Operational',
-    completionDate: '2023-06-15',
-    investmentSize: 450,
+    capacity: '250 MW',
+    technology: 'Utility-Scale Solar',
+    status: 'OPERATIONAL',
+    cod: '2023-06-15',
+    image: 'https://images.unsplash.com/photo-1509391366360-2e938aa1ef14?w=800&h=600&fit=crop',
     description: 'Large-scale solar installation providing clean energy to 50,000 homes.',
-    featuredImage: '',
-    keyMetrics: [
-      { label: 'Capacity', value: '250 MW' },
-      { label: 'Investment', value: '$450M' }
-    ]
+    stats: {
+      generation: '450 GWh/year',
+      homes: '50K',
+      co2: '180K tonnes/year'
+    }
   }
 ];
 
 export const demoInsights = [
   {
-    _id: '1',
-    title: 'The Future of Renewable Energy Finance',
+    id: '1',
     slug: 'future-renewable-energy-finance',
-    excerpt: 'Exploring emerging trends in clean energy investment.',
-    content: 'The renewable energy sector is experiencing unprecedented growth...',
-    category: 'Market Analysis',
     type: 'Research',
-    author: 'Helio Aegis Team',
-    featuredImage: '',
-    publishedAt: new Date(),
-    readTime: '5 min read'
+    title: 'The Future of Renewable Energy Finance',
+    excerpt: 'Exploring emerging trends in clean energy investment.',
+    date: 'Jan 15, 2025',
+    readTime: '5 min read',
+    featured: true
   }
 ];
