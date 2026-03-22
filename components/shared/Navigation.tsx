@@ -1,11 +1,12 @@
-import dbConnect from '@/lib/mongodb';
+import dbConnect, { DEMO_MODE } from '@/lib/mongodb';
 import { Navigation as NavigationModel } from '@/models/Navigation';
 import NavigationClient from './NavigationClient';
+import { demoNavigation } from '@/lib/demo-data';
 
 export default async function Navigation() {
   await dbConnect();
   
-  let navigation: any = await NavigationModel.findOne({}).lean();
+  let navigation: any = DEMO_MODE ? demoNavigation : await NavigationModel.findOne({}).lean();
   
   if (!navigation) {
     navigation = {
