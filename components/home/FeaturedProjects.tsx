@@ -40,7 +40,7 @@ export default async function FeaturedProjects() {
     },
   }));
 
-  return <FeaturedProjectsClient projects={serializedProjects} />;
+  return <FeaturedProjectsClient projects={serializedProjects as any} />;
 }
 
 function getTechnologyLabel(tech: string): string {
