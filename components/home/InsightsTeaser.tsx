@@ -29,5 +29,5 @@ export default async function InsightsTeaser() {
     featured: insight.featured || false,
   }));
 
-  return <InsightsTeaserClient insights={serializedInsights} />;
+  return <InsightsTeaserClient insights={serializedInsights as any} />;
 }
