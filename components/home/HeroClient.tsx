@@ -35,7 +35,7 @@ export default function HeroClient({ hero, metrics }: HeroProps) {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen flex items-center overflow-hidden bg-void pt-20 z-0">
+    <section className="relative w-full min-h-[100svh] flex items-center overflow-hidden bg-void pt-24 pb-12 md:pt-20 z-0">
       {/* Background Layer */}
       {hero.backgroundType === 'image' && hero.backgroundImage && (
         <>
@@ -110,7 +110,7 @@ export default function HeroClient({ hero, metrics }: HeroProps) {
 
             {/* Headline */}
             <div className="space-y-4">
-              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-tight tracking-tight">
+              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight tracking-tight">
                 <span className="text-text-primary">{hero.headlineLine1}</span>
                 <br />
                 <span className="bg-gradient-to-r from-solar via-solar to-hydrogen bg-clip-text text-transparent">
@@ -124,7 +124,7 @@ export default function HeroClient({ hero, metrics }: HeroProps) {
               initial={{ opacity: 0 }}
               animate={isLoaded ? { opacity: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-lg md:text-xl text-text-secondary leading-relaxed max-w-2xl"
+              className="text-base sm:text-lg md:text-xl text-text-secondary leading-relaxed max-w-2xl"
             >
               {hero.subheadline}
             </motion.p>
@@ -134,12 +134,12 @@ export default function HeroClient({ hero, metrics }: HeroProps) {
               initial={{ opacity: 0 }}
               animate={isLoaded ? { opacity: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="grid grid-cols-3 gap-6 py-8 border-t border-b border-white/[0.08]"
+              className="grid grid-cols-3 gap-3 sm:gap-6 py-6 sm:py-8 border-t border-b border-white/[0.08]"
             >
               {metrics.map((metric, idx) => (
                 <div key={idx} className="space-y-2">
-                  <div className="flex items-baseline space-x-1">
-                    <span className="metric-value text-3xl md:text-4xl">
+                  <div className="flex items-baseline space-x-0.5 sm:space-x-1">
+                    <span className="metric-value text-2xl sm:text-3xl md:text-4xl">
                       <CountUp
                         end={parseFloat(metric.value)}
                         decimals={metric.value.includes('.') ? 1 : 0}
@@ -148,7 +148,7 @@ export default function HeroClient({ hero, metrics }: HeroProps) {
                       />
                     </span>
                   </div>
-                  <div className="metric-label text-xs">{metric.label}</div>
+                  <div className="metric-label text-[10px] sm:text-xs">{metric.label}</div>
                 </div>
               ))}
             </motion.div>
@@ -158,7 +158,7 @@ export default function HeroClient({ hero, metrics }: HeroProps) {
               initial={{ opacity: 0 }}
               animate={isLoaded ? { opacity: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="flex flex-col sm:flex-row gap-4 pt-4"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4"
             >
               <Link href={hero.primaryCTAHref} className="group relative btn-primary overflow-hidden">
                 <span className="relative z-10 flex items-center justify-center space-x-2">
