@@ -72,11 +72,11 @@ export default async function ContactPageView() {
         timezone: 'GMT'
       },
       {
-        region: 'MENA',
-        office: 'Dubai, UAE',
-        address: '789 DIFC, Dubai, UAE',
-        phone: '+971 (4) 362 1111',
-        timezone: 'GST'
+        region: 'Africa',
+        office: 'Mauritius',
+        address: 'Port Louis, Mauritius',
+        phone: '+230 5 xxx xxxx',
+        timezone: 'MUT'
       }
     ]
   };

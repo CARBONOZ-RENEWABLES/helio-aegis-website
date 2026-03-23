@@ -51,7 +51,7 @@ export default async function AboutPageView() {
     offices: [
       { region: 'North America', office: 'New York, USA', team: '45+ professionals', focus: 'Solar, Wind, Storage' },
       { region: 'Europe', office: 'London, UK', team: '35+ professionals', focus: 'Offshore Wind, Solar' },
-      { region: 'MENA', office: 'Dubai, UAE', team: '25+ professionals', focus: 'Solar, Green Hydrogen' }
+      { region: 'Africa', office: 'Mauritius', team: '25+ professionals', focus: 'Solar, Green Hydrogen' }
     ],
     esg: {
       headline: 'ESG & Climate Commitment',
@@ -76,12 +76,7 @@ export default async function AboutPageView() {
   };
 
   const defaultTeam = [
-    { name: 'Sarah Chen', title: 'Chief Executive Officer', bio: '20+ years in renewable energy finance and project development. Former Managing Director at Goldman Sachs.', expertise: ['Project Finance', 'M&A', 'Capital Markets'] },
-    { name: 'Michael Rodriguez', title: 'Chief Investment Officer', bio: '18 years in infrastructure investing and capital markets. Led $4B+ in renewable energy investments.', expertise: ['Infrastructure', 'Fund Management', 'Risk Management'] },
-    { name: 'Dr. James Wilson', title: 'Chief Technology Officer', bio: '15 years in renewable energy engineering and operations. PhD in Electrical Engineering.', expertise: ['Solar', 'Wind', 'Energy Storage'] },
-    { name: 'Lisa Martinez', title: 'Chief Operating Officer', bio: '12 years in operations and project management. Scaled operations across 5 continents.', expertise: ['Operations', 'Project Management', 'Compliance'] },
-    { name: 'David Thompson', title: 'Head of Project Development', bio: '16 years in project development. Originated 8+ GW of renewable capacity.', expertise: ['Development', 'Permitting', 'EPC Management'] },
-    { name: 'Jennifer Park', title: 'Head of Investor Relations', bio: '14 years in institutional investor relations. Manages relationships with 50+ LPs.', expertise: ['Investor Relations', 'Communications', 'Reporting'] }
+    { name: 'Felix Zuckschwerdt', title: 'Chief Executive Officer', bio: '20+ years in renewable energy finance and project development.', expertise: ['Project Finance', 'M&A', 'Capital Markets'] }
   ];
 
   const data = {
@@ -211,7 +206,7 @@ export default async function AboutPageView() {
                   </div>
                 ) : (
                   <div className="w-20 h-20 bg-gradient-to-br from-solar/20 to-hydrogen/20 rounded-sm flex items-center justify-center">
-                    <span className="text-4xl">👤</span>
+                    <span className="text-2xl font-display text-solar">{leader.name.charAt(0)}</span>
                   </div>
                 )}
                 <div className="space-y-2">
