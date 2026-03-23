@@ -126,6 +126,57 @@ export const demoProjects = [
       homes: '50K',
       co2: '180K tonnes/year'
     }
+  },
+  {
+    id: '2',
+    slug: 'atlantic-wind-offshore',
+    name: 'Atlantic Wind Offshore',
+    location: 'North Sea, UK',
+    capacity: '800 MW',
+    technology: 'Offshore Wind',
+    status: 'OPERATIONAL',
+    cod: '2024-03-20',
+    image: 'https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?w=800&h=600&fit=crop',
+    description: 'Offshore wind farm powering 750,000 homes with clean energy.',
+    stats: {
+      generation: '2800 GWh/year',
+      homes: '750K',
+      co2: '1.2M tonnes/year'
+    }
+  },
+  {
+    id: '3',
+    slug: 'desert-solar-mauritius',
+    name: 'Mauritius Solar Park',
+    location: 'Mauritius',
+    capacity: '150 MW',
+    technology: 'Utility-Scale Solar',
+    status: 'CONSTRUCTION',
+    cod: '2025-Q3',
+    image: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=800&h=600&fit=crop',
+    description: 'Island-scale solar deployment supporting energy independence.',
+    stats: {
+      generation: '280 GWh/year',
+      homes: '35K',
+      co2: '120K tonnes/year'
+    }
+  },
+  {
+    id: '4',
+    slug: 'energy-storage-texas',
+    name: 'Texas Grid Storage',
+    location: 'Texas, USA',
+    capacity: '500 MWh',
+    technology: 'Battery Storage',
+    status: 'OPERATIONAL',
+    cod: '2024-01-10',
+    image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&h=600&fit=crop',
+    description: 'Grid-scale battery storage providing reliability and flexibility.',
+    stats: {
+      generation: 'N/A',
+      homes: '100K',
+      co2: '85K tonnes/year'
+    }
   }
 ];
 
@@ -135,9 +186,39 @@ export const demoInsights = [
     slug: 'future-renewable-energy-finance',
     type: 'Research',
     title: 'The Future of Renewable Energy Finance',
-    excerpt: 'Exploring emerging trends in clean energy investment.',
+    excerpt: 'Exploring emerging trends in clean energy investment and how institutional capital is reshaping the renewable infrastructure landscape.',
     date: 'Jan 15, 2025',
     readTime: '5 min read',
     featured: true
+  },
+  {
+    id: '2',
+    slug: 'offshore-wind-investment-outlook',
+    type: 'Commentary',
+    title: 'Offshore Wind: Investment Outlook 2025',
+    excerpt: 'Deep dive into offshore wind economics, policy drivers, and capital deployment opportunities across European and North American markets.',
+    date: 'Jan 10, 2025',
+    readTime: '7 min read',
+    featured: true
+  },
+  {
+    id: '3',
+    slug: 'battery-storage-market-dynamics',
+    type: 'Report',
+    title: 'Battery Storage Market Dynamics',
+    excerpt: 'Comprehensive analysis of grid-scale battery storage economics, revenue stacking strategies, and emerging market opportunities.',
+    date: 'Dec 20, 2024',
+    readTime: '10 min read',
+    featured: false
+  },
+  {
+    id: '4',
+    slug: 'green-hydrogen-infrastructure',
+    type: 'Research',
+    title: 'Green Hydrogen Infrastructure Investment',
+    excerpt: 'Evaluating the investment case for green hydrogen production, storage, and distribution infrastructure in key global markets.',
+    date: 'Dec 15, 2024',
+    readTime: '8 min read',
+    featured: false
   }
 ];
