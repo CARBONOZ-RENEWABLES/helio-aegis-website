@@ -14,7 +14,7 @@ export default async function HomepageEditorPage() {
         eyebrowText: 'Energy Finance & Project Management',
         headlineLine1: 'Structuring the',
         headlineLine2: 'Clean Energy Future',
-        subheadline: 'We originate, finance, and deliver utility-scale renewable infrastructure across North America, Europe, and MENA. Institutional capital at scale.',
+        subheadline: 'We originate, finance, and deliver utility-scale renewable infrastructure across North America, Europe, and Africa. Institutional capital at scale.',
         primaryCTALabel: 'Explore Our Portfolio',
         primaryCTAHref: '/portfolio',
         secondaryCTALabel: 'Investment Deck',

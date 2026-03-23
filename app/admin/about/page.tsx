@@ -13,7 +13,7 @@ export default async function AboutPageEditorPage() {
         eyebrowText: 'About Helio Aegis',
         headlineLine1: 'Structuring the',
         headlineLine2: 'Clean Energy Future',
-        subheadline: 'Since 2012, Helio Aegis has been at the forefront of renewable energy project management and energy finance, structuring and delivering transformational infrastructure across North America, Europe, and MENA.'
+        subheadline: 'Since 2012, Helio Aegis has been at the forefront of renewable energy project management and energy finance, structuring and delivering transformational infrastructure across North America, Europe, and Africa.'
       },
       stats: [
         { label: 'Years Active', value: '13+', order: 1 },

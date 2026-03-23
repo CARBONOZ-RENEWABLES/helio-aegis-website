@@ -12,7 +12,7 @@ export default async function Hero() {
     eyebrowText: homepage?.hero?.eyebrowText || 'Energy Finance & Project Management',
     headlineLine1: homepage?.hero?.headlineLine1 || 'Structuring the',
     headlineLine2: homepage?.hero?.headlineLine2 || 'Clean Energy Future',
-    subheadline: homepage?.hero?.subheadline || 'We originate, finance, and deliver utility-scale renewable infrastructure across North America, Europe, and MENA. Institutional capital at scale.',
+    subheadline: homepage?.hero?.subheadline || 'We originate, finance, and deliver utility-scale renewable infrastructure across North America, Europe, and Africa. Institutional capital at scale.',
     primaryCTALabel: homepage?.hero?.primaryCTALabel || 'Explore Our Portfolio',
     primaryCTAHref: homepage?.hero?.primaryCTAHref || '/portfolio',
     secondaryCTALabel: homepage?.hero?.secondaryCTALabel || 'Investment Deck',
