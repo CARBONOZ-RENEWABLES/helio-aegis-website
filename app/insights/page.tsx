@@ -1,11 +1,13 @@
-import dbConnect from '@/lib/mongodb';
+import dbConnect, { DEMO_MODE } from '@/lib/mongodb';
 import Insight from '@/models/Insight';
 import InsightsClient from './InsightsClient';
 
 export default async function InsightsPage() {
-  await dbConnect();
+  if (!DEMO_MODE) {
+    await dbConnect();
+  }
   
-  const insights = await Insight.find({ status: 'published' })
+  const insights = DEMO_MODE ? [] : await Insight.find({ status: 'published' })
     .sort({ publishedAt: -1, updatedAt: -1 })
     .lean();
 

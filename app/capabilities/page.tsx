@@ -2,12 +2,15 @@ import Navigation from '@/components/shared/Navigation';
 import Footer from '@/components/shared/Footer';
 import Link from 'next/link';
 import FAQSectionClient from '@/components/FAQ/FAQSectionClient';
-import dbConnect from '@/lib/mongodb';
+import dbConnect, { DEMO_MODE } from '@/lib/mongodb';
 import FAQ from '@/models/FAQ';
 
 export default async function CapabilitiesPage() {
-  await dbConnect();
-  const faqs = await FAQ.find({ status: 'published' }).sort({ category: 1, order: 1 }).lean();
+  if (!DEMO_MODE) {
+    await dbConnect();
+  }
+  
+  const faqs = DEMO_MODE ? [] : await FAQ.find({ status: 'published' }).sort({ category: 1, order: 1 }).lean();
 
   const capabilities = [
     {

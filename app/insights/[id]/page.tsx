@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Navigation from '@/components/shared/Navigation';
 import Footer from '@/components/shared/Footer';
-import dbConnect from '@/lib/mongodb';
+import dbConnect, { DEMO_MODE } from '@/lib/mongodb';
 import Insight from '@/models/Insight';
 
 interface InsightPageProps {
@@ -13,8 +13,11 @@ interface InsightPageProps {
 }
 
 export async function generateMetadata({ params }: InsightPageProps): Promise<Metadata> {
-  await dbConnect();
-  const insight = await Insight.findOne({ slug: params.id, status: 'published' }).lean() as any;
+  if (!DEMO_MODE) {
+    await dbConnect();
+  }
+  
+  const insight = DEMO_MODE ? null : await Insight.findOne({ slug: params.id, status: 'published' }).lean() as any;
 
   if (!insight) {
     return {
@@ -30,8 +33,11 @@ export async function generateMetadata({ params }: InsightPageProps): Promise<Me
 }
 
 export default async function InsightPage({ params }: InsightPageProps) {
-  await dbConnect();
-  const insight = await Insight.findOne({ slug: params.id, status: 'published' }).lean();
+  if (!DEMO_MODE) {
+    await dbConnect();
+  }
+  
+  const insight = DEMO_MODE ? null : await Insight.findOne({ slug: params.id, status: 'published' }).lean();
 
   if (!insight) {
     return (
@@ -52,7 +58,7 @@ export default async function InsightPage({ params }: InsightPageProps) {
   }
 
   const insightData: any = insight;
-  const relatedInsights = await Insight.find({
+  const relatedInsights = DEMO_MODE ? [] : await Insight.find({
     _id: { $ne: (insight as any)?._id },
     category: (insight as any)?.category,
     status: 'published'

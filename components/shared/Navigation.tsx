@@ -4,7 +4,9 @@ import NavigationClient from './NavigationClient';
 import { demoNavigation } from '@/lib/demo-data';
 
 export default async function Navigation() {
-  await dbConnect();
+  if (!DEMO_MODE) {
+    await dbConnect();
+  }
   
   let navigation: any = DEMO_MODE ? demoNavigation : await NavigationModel.findOne({}).lean();
   

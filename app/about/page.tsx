@@ -1,14 +1,17 @@
 import Navigation from '@/components/shared/Navigation';
 import Footer from '@/components/shared/Footer';
-import dbConnect from '@/lib/mongodb';
+import dbConnect, { DEMO_MODE } from '@/lib/mongodb';
 import TeamMember from '@/models/TeamMember';
 import AboutPage from '@/models/AboutPage';
 import Image from 'next/image';
 
 export default async function AboutPageView() {
-  await dbConnect();
-  const teamMembers = await TeamMember.find({ status: 'published' }).sort({ order: 1 }).lean();
-  const aboutData = await AboutPage.findOne({}).lean();
+  if (!DEMO_MODE) {
+    await dbConnect();
+  }
+  
+  const teamMembers = DEMO_MODE ? [] : await TeamMember.find({ status: 'published' }).sort({ order: 1 }).lean();
+  const aboutData = DEMO_MODE ? null : await AboutPage.findOne({}).lean();
 
   const defaultData = {
     hero: {

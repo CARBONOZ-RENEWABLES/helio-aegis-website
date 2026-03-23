@@ -1,11 +1,13 @@
-import dbConnect from '@/lib/mongodb';
+import dbConnect, { DEMO_MODE } from '@/lib/mongodb';
 import Project from '@/models/Project';
 import PortfolioClient from './PortfolioClient';
 
 export default async function PortfolioPage() {
-  await dbConnect();
+  if (!DEMO_MODE) {
+    await dbConnect();
+  }
   
-  const projects = await Project.find({ status: 'published' })
+  const projects = DEMO_MODE ? [] : await Project.find({ status: 'published' })
     .sort({ 'basicInfo.order': 1, updatedAt: -1 })
     .lean();
 
