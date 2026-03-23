@@ -29,9 +29,24 @@ interface HeroProps {
 
 export default function HeroClient({ hero, metrics }: HeroProps) {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [particleRadius, setParticleRadius] = useState(250);
 
   useEffect(() => {
     setIsLoaded(true);
+    
+    const updateRadius = () => {
+      if (window.innerWidth < 640) {
+        setParticleRadius(125);
+      } else if (window.innerWidth < 1024) {
+        setParticleRadius(175);
+      } else {
+        setParticleRadius(250);
+      }
+    };
+    
+    updateRadius();
+    window.addEventListener('resize', updateRadius);
+    return () => window.removeEventListener('resize', updateRadius);
   }, []);
 
   return (
@@ -192,26 +207,26 @@ export default function HeroClient({ hero, metrics }: HeroProps) {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={isLoaded ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 1.2, delay: 0.3 }}
-            className="hidden lg:flex items-center justify-center relative h-[600px]"
+            className="flex items-center justify-center relative h-[300px] sm:h-[400px] lg:h-[600px] -mt-8 lg:mt-0"
           >
             {/* Globe Container */}
             <div className="relative w-full h-full flex items-center justify-center">
               {/* Outer Ring */}
               <motion.div
-                className="absolute w-[500px] h-[500px] rounded-full border border-solar/20"
+                className="absolute w-[250px] h-[250px] sm:w-[350px] sm:h-[350px] lg:w-[500px] lg:h-[500px] rounded-full border border-solar/20"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
               />
               
               {/* Middle Ring */}
               <motion.div
-                className="absolute w-[420px] h-[420px] rounded-full border border-hydrogen/15"
+                className="absolute w-[210px] h-[210px] sm:w-[290px] sm:h-[290px] lg:w-[420px] lg:h-[420px] rounded-full border border-hydrogen/15"
                 animate={{ rotate: -360 }}
                 transition={{ duration: 45, repeat: Infinity, ease: 'linear' }}
               />
 
               {/* Globe Core */}
-              <div className="relative w-[350px] h-[350px]">
+              <div className="relative w-[180px] h-[180px] sm:w-[250px] sm:h-[250px] lg:w-[350px] lg:h-[350px]">
                 {/* Gradient Sphere */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-solar/20 via-hydrogen/10 to-transparent backdrop-blur-sm" />
                 
@@ -257,7 +272,7 @@ export default function HeroClient({ hero, metrics }: HeroProps) {
                 ].map((point, i) => (
                   <motion.div
                     key={`point-${i}`}
-                    className="absolute w-2 h-2 rounded-full bg-solar shadow-lg shadow-solar/50"
+                    className="absolute w-1.5 h-1.5 lg:w-2 lg:h-2 rounded-full bg-solar shadow-lg shadow-solar/50"
                     style={{ top: point.top, left: point.left }}
                     animate={{
                       scale: [1, 1.5, 1],
@@ -285,8 +300,8 @@ export default function HeroClient({ hero, metrics }: HeroProps) {
                     left: '50%',
                   }}
                   animate={{
-                    x: [0, Math.cos((i * 60 * Math.PI) / 180) * 250, 0],
-                    y: [0, Math.sin((i * 60 * Math.PI) / 180) * 250, 0],
+                    x: [0, Math.cos((i * 60 * Math.PI) / 180) * particleRadius, 0],
+                    y: [0, Math.sin((i * 60 * Math.PI) / 180) * particleRadius, 0],
                     opacity: [0, 1, 0],
                   }}
                   transition={{
