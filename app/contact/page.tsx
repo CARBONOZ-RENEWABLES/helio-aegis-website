@@ -93,7 +93,7 @@ export default async function ContactPageView() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 md:px-12 lg:px-20 overflow-hidden">
+      <section className="relative pt-32 pb-20 overflow-hidden" style={{ paddingLeft: '1.25rem', paddingRight: '1.25rem' }}>
         <div className="absolute inset-0 grid-texture opacity-10" />
         <div className="absolute top-0 right-0 w-96 h-96 bg-solar rounded-full opacity-5 blur-3xl" />
 
@@ -103,14 +103,14 @@ export default async function ContactPageView() {
               <div className="w-8 h-px bg-gradient-to-r from-solar to-transparent" />
               <span className="eyebrow">{data.hero.eyebrowText}</span>
             </div>
-            <h1 className="font-display text-5xl md:text-6xl leading-tight tracking-tight">
+            <h1>
               <span className="text-text-primary">{data.hero.headlineLine1}</span>
               <br />
               <span className="bg-gradient-to-r from-solar to-hydrogen bg-clip-text text-transparent">
                 {data.hero.headlineLine2}
               </span>
             </h1>
-            <p className="text-xl text-text-secondary leading-relaxed max-w-2xl">
+            <p className="subheadline text-text-secondary leading-relaxed max-w-2xl">
               {data.hero.subheadline}
             </p>
           </div>
@@ -123,7 +123,7 @@ export default async function ContactPageView() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             {data.contactMethods.map((contact: any, idx: number) => (
               <div key={idx} className="card p-8 space-y-4">
-                <h3 className="font-display text-xl text-text-primary">{contact.title}</h3>
+                <h3>{contact.title}</h3>
                 <p className="text-sm text-text-secondary">{contact.description}</p>
                 <div className="space-y-2 pt-4 border-t border-white/[0.08]">
                   <div>
@@ -165,13 +165,13 @@ export default async function ContactPageView() {
       {/* Global Offices */}
       <section className="section-padding">
         <div className="container-custom">
-          <h2 className="font-display text-3xl md:text-4xl text-text-primary mb-12">
+          <h2 className="mb-12">
             Global Offices
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {data.offices.map((office: any, idx: number) => (
               <div key={idx} className="card p-8 space-y-4">
-                <h3 className="font-display text-xl text-text-primary">{office.region}</h3>
+                <h3>{office.region}</h3>
                 <div className="space-y-3 text-sm">
                   <div>
                     <p className="text-xs text-text-muted uppercase tracking-widest mb-1">

@@ -215,7 +215,7 @@ export default function Hero() {
               className="text-lg md:text-xl text-text-secondary leading-relaxed max-w-lg"
             >
               We originate, finance, and deliver utility-scale renewable infrastructure across
-              North America, Europe, and MENA. Institutional capital at scale.
+              North America, Europe, and Africa. Institutional capital at scale.
             </motion.p>
 
             {/* Advanced Metrics Strip */}

@@ -125,7 +125,7 @@ export default function HeroClient({ hero, metrics }: HeroProps) {
 
             {/* Headline */}
             <div className="space-y-4">
-              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight tracking-tight">
+              <h1>
                 <span className="text-text-primary">{hero.headlineLine1}</span>
                 <br />
                 <span className="bg-gradient-to-r from-solar via-solar to-hydrogen bg-clip-text text-transparent">
@@ -139,7 +139,7 @@ export default function HeroClient({ hero, metrics }: HeroProps) {
               initial={{ opacity: 0 }}
               animate={isLoaded ? { opacity: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-base sm:text-lg md:text-xl text-text-secondary leading-relaxed max-w-2xl"
+              className="subheadline text-text-secondary leading-relaxed max-w-2xl"
             >
               {hero.subheadline}
             </motion.p>
@@ -154,7 +154,7 @@ export default function HeroClient({ hero, metrics }: HeroProps) {
               {metrics.map((metric, idx) => (
                 <div key={idx} className="space-y-2">
                   <div className="flex items-baseline space-x-0.5 sm:space-x-1">
-                    <span className="metric-value text-2xl sm:text-3xl md:text-4xl">
+                    <span className="metric-value">
                       <CountUp
                         end={parseFloat(metric.value)}
                         decimals={metric.value.includes('.') ? 1 : 0}
@@ -163,7 +163,7 @@ export default function HeroClient({ hero, metrics }: HeroProps) {
                       />
                     </span>
                   </div>
-                  <div className="metric-label text-[10px] sm:text-xs">{metric.label}</div>
+                  <div className="metric-label">{metric.label}</div>
                 </div>
               ))}
             </motion.div>

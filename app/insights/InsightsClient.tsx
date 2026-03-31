@@ -28,7 +28,7 @@ export default function InsightsClient({ insights }: { insights: Insight[] }) {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 md:px-12 lg:px-20 overflow-hidden">
+      <section className="relative pt-32 pb-20 overflow-hidden" style={{ paddingLeft: '1.25rem', paddingRight: '1.25rem' }}>
         <div className="absolute inset-0 grid-texture opacity-10" />
         <div className="absolute top-0 right-0 w-96 h-96 bg-solar rounded-full opacity-5 blur-3xl" />
 
@@ -38,14 +38,14 @@ export default function InsightsClient({ insights }: { insights: Insight[] }) {
               <div className="w-8 h-px bg-gradient-to-r from-solar to-transparent" />
               <span className="eyebrow">Insights</span>
             </div>
-            <h1 className="font-display text-5xl md:text-6xl leading-tight tracking-tight">
+            <h1>
               <span className="text-text-primary">Intelligence for</span>
               <br />
               <span className="bg-gradient-to-r from-solar to-hydrogen bg-clip-text text-transparent">
                 Energy Markets
               </span>
             </h1>
-            <p className="text-xl text-text-secondary leading-relaxed max-w-2xl">
+            <p className="subheadline text-text-secondary leading-relaxed max-w-2xl">
               Market research, policy analysis, and thought leadership from our team of
               renewable energy experts.
             </p>
@@ -55,7 +55,7 @@ export default function InsightsClient({ insights }: { insights: Insight[] }) {
 
       {/* Filter Section */}
       <section className="border-b border-white/[0.08] bg-gradient-to-r from-void via-slate-dark/30 to-void">
-        <div className="container-custom px-6 md:px-12 lg:px-20 py-8">
+        <div className="container-custom py-8" style={{ paddingLeft: '1.25rem', paddingRight: '1.25rem' }}>
           <div className="flex flex-wrap gap-3">
             <span className="text-xs text-text-muted uppercase tracking-widest font-semibold self-center">
               Filter by:
@@ -101,7 +101,7 @@ export default function InsightsClient({ insights }: { insights: Insight[] }) {
                 <p className="text-xs text-text-muted font-mono">{insight.date}</p>
 
                 {/* Title */}
-                <h3 className="font-display text-xl md:text-2xl text-text-primary group-hover:text-solar transition-colors">
+                <h3>
                   {insight.title}
                 </h3>
 
@@ -130,7 +130,7 @@ export default function InsightsClient({ insights }: { insights: Insight[] }) {
       <section className="section-padding bg-slate-dark">
         <div className="container-custom max-w-2xl">
           <div className="card p-12 text-center space-y-6">
-            <h2 className="font-display text-3xl text-text-primary">
+            <h2>
               Stay Updated on Energy Markets
             </h2>
             <p className="text-lg text-text-secondary">

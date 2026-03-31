@@ -58,7 +58,7 @@ export default function PortfolioClient({ projects: allProjects }: { projects: P
             className="space-y-4"
           >
             <div className="eyebrow">Portfolio</div>
-            <h1 className="font-display text-4xl md:text-5xl text-text-primary">
+            <h1>
               Our Global Project Portfolio
             </h1>
             <p className="text-lg text-text-secondary max-w-2xl">
@@ -191,7 +191,7 @@ export default function PortfolioClient({ projects: allProjects }: { projects: P
                   </div>
                   <div className="p-6 flex flex-col flex-grow space-y-4">
                     <div>
-                      <h3 className="font-display text-lg text-text-primary mb-1">
+                      <h3>
                         {project.name}
                       </h3>
                       <p className="text-sm text-solar font-mono">{project.location}</p>
@@ -240,7 +240,7 @@ export default function PortfolioClient({ projects: allProjects }: { projects: P
                       <div className="absolute inset-0 bg-gradient-to-t from-void via-transparent to-transparent opacity-40" />
                     </div>
                     <div className="flex-grow p-4 space-y-2">
-                      <h3 className="font-display text-lg text-text-primary group-hover:text-solar transition-colors">
+                      <h3>
                         {project.name}
                       </h3>
                       <p className="text-sm text-solar font-mono">{project.location}</p>

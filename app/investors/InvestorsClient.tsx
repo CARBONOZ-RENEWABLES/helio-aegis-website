@@ -10,7 +10,7 @@ export default function InvestorsClient({ data, faqs }: any) {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 md:px-12 lg:px-20 overflow-hidden">
+      <section className="relative pt-32 pb-20 overflow-hidden" style={{ paddingLeft: '1.25rem', paddingRight: '1.25rem' }}>
         <div className="absolute inset-0 grid-texture opacity-10" />
         <div className="absolute top-0 right-0 w-96 h-96 bg-solar rounded-full opacity-5 blur-3xl" />
 
@@ -20,14 +20,14 @@ export default function InvestorsClient({ data, faqs }: any) {
               <div className="w-8 h-px bg-gradient-to-r from-solar to-transparent" />
               <span className="eyebrow">Investors</span>
             </div>
-            <h1 className="font-display text-5xl md:text-6xl leading-tight tracking-tight">
+            <h1>
               <span className="text-text-primary">{data.hero.headline.split('\n')[0]}</span>
               <br />
               <span className="bg-gradient-to-r from-solar to-hydrogen bg-clip-text text-transparent">
                 {data.hero.headline.split('\n')[1]}
               </span>
             </h1>
-            <p className="text-xl text-text-secondary leading-relaxed max-w-2xl">
+            <p className="subheadline text-text-secondary leading-relaxed max-w-2xl">
               {data.hero.description}
             </p>
           </div>
@@ -36,7 +36,7 @@ export default function InvestorsClient({ data, faqs }: any) {
 
       {/* AUM & Track Record */}
       <section className="border-y border-white/[0.08] bg-gradient-to-r from-void via-slate-dark/50 to-void">
-        <div className="container-custom px-6 md:px-12 lg:px-20 py-12">
+        <div className="container-custom py-12" style={{ paddingLeft: '1.25rem', paddingRight: '1.25rem' }}>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {data.stats.map((stat: any, idx: number) => (
               <div key={idx} className="space-y-2">
@@ -54,7 +54,7 @@ export default function InvestorsClient({ data, faqs }: any) {
       <section className="section-padding">
         <div className="container-custom">
           <div className="mb-16">
-            <h2 className="font-display text-3xl md:text-4xl text-text-primary mb-4">
+            <h2 className="mb-4">
               Fund Structures
             </h2>
             <p className="text-lg text-text-secondary max-w-2xl">
@@ -67,7 +67,7 @@ export default function InvestorsClient({ data, faqs }: any) {
             {data.fundStructures.map((fund: any, idx: number) => (
               <div key={idx} className="card p-8 space-y-6 flex flex-col">
                 <div>
-                  <h3 className="font-display text-2xl text-text-primary">{fund.name}</h3>
+                  <h3>{fund.name}</h3>
                   <p className="text-sm text-solar font-semibold mt-1">{fund.subtitle}</p>
                 </div>
                 <p className="text-text-secondary">{fund.description}</p>
@@ -116,7 +116,7 @@ export default function InvestorsClient({ data, faqs }: any) {
       <section className="section-padding bg-slate-dark">
         <div className="container-custom">
           <div className="mb-16">
-            <h2 className="font-display text-3xl md:text-4xl text-text-primary mb-4">
+            <h2 className="mb-4">
               Track Record
             </h2>
             <p className="text-lg text-text-secondary max-w-2xl">
@@ -144,7 +144,7 @@ export default function InvestorsClient({ data, faqs }: any) {
               },
             ].map((section, idx) => (
               <div key={idx} className="card p-8 space-y-6">
-                <h3 className="font-display text-2xl text-text-primary">{section.title}</h3>
+                <h3>{section.title}</h3>
                 <div className="space-y-4">
                   {section.metrics.map((metric, midx) => (
                     <div key={midx} className="pb-4 border-b border-white/[0.08] last:border-0 last:pb-0">
@@ -161,7 +161,7 @@ export default function InvestorsClient({ data, faqs }: any) {
 
           {/* Vintage Performance */}
           <div className="card p-8 space-y-6">
-            <h3 className="font-display text-2xl text-text-primary">Vintage Year Performance</h3>
+            <h3>Vintage Year Performance</h3>
             <div className="space-y-3">
               {data.vintagePerformance?.map((row: any, idx: number) => (
                 <div
@@ -197,7 +197,7 @@ export default function InvestorsClient({ data, faqs }: any) {
       <section className="section-padding">
         <div className="container-custom max-w-2xl">
           <div className="card p-12 text-center space-y-6">
-            <h2 className="font-display text-3xl text-text-primary">
+            <h2>
               Access Our Data Room
             </h2>
             <p className="text-lg text-text-secondary">
@@ -218,7 +218,7 @@ export default function InvestorsClient({ data, faqs }: any) {
       {/* IR Contacts */}
       <section className="section-padding bg-slate-dark">
         <div className="container-custom">
-          <h2 className="font-display text-3xl text-text-primary mb-12">
+          <h2 className="mb-12">
             Investor Relations Team
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -234,7 +234,7 @@ export default function InvestorsClient({ data, faqs }: any) {
                   </div>
                 )}
                 <div>
-                  <h3 className="font-display text-lg text-text-primary">{contact.name}</h3>
+                  <h3>{contact.name}</h3>
                   <p className="text-sm text-solar font-semibold mt-1">{contact.title}</p>
                 </div>
                 <div className="space-y-2 pt-4 border-t border-white/[0.08]">

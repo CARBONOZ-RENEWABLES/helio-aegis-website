@@ -96,7 +96,7 @@ export default async function AboutPageView() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 md:px-12 lg:px-20 overflow-hidden">
+      <section className="relative pt-32 pb-20 overflow-hidden" style={{ paddingLeft: '1.25rem', paddingRight: '1.25rem' }}>
         <div className="absolute inset-0 grid-texture opacity-10" />
         <div className="absolute top-0 right-0 w-96 h-96 bg-solar rounded-full opacity-5 blur-3xl" />
 
@@ -106,14 +106,14 @@ export default async function AboutPageView() {
               <div className="w-8 h-px bg-gradient-to-r from-solar to-transparent" />
               <span className="eyebrow">{data.hero.eyebrowText}</span>
             </div>
-            <h1 className="font-display text-5xl md:text-6xl leading-tight tracking-tight">
+            <h1>
               <span className="text-text-primary">{data.hero.headlineLine1}</span>
               <br />
               <span className="bg-gradient-to-r from-solar to-hydrogen bg-clip-text text-transparent">
                 {data.hero.headlineLine2}
               </span>
             </h1>
-            <p className="text-xl text-text-secondary leading-relaxed max-w-2xl">
+            <p className="subheadline text-text-secondary leading-relaxed max-w-2xl">
               {data.hero.subheadline}
             </p>
           </div>
@@ -122,7 +122,7 @@ export default async function AboutPageView() {
 
       {/* Stats Strip */}
       <section className="border-y border-white/[0.08] bg-gradient-to-r from-void via-slate-dark/50 to-void">
-        <div className="container-custom px-6 md:px-12 lg:px-20 py-12">
+        <div className="container-custom py-12" style={{ paddingLeft: '1.25rem', paddingRight: '1.25rem' }}>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {data.stats.map((stat: any, idx: number) => (
               <div key={idx} className="space-y-2">
@@ -143,7 +143,7 @@ export default async function AboutPageView() {
             {/* Left: Story */}
             <div className="space-y-8">
               <div>
-                <h2 className="font-display text-3xl md:text-4xl text-text-primary mb-6">
+                <h2 className="mb-6">
                   {data.story.headline}
                 </h2>
                 <div className="space-y-4 text-lg text-text-secondary leading-relaxed">
@@ -157,14 +157,14 @@ export default async function AboutPageView() {
             {/* Right: Mission & Values */}
             <div className="space-y-8">
               <div className="card p-8 space-y-4">
-                <h3 className="font-display text-2xl text-text-primary">{data.mission.headline}</h3>
+                <h3>{data.mission.headline}</h3>
                 <p className="text-text-secondary leading-relaxed">
                   {data.mission.text}
                 </p>
               </div>
 
               <div className="card p-8 space-y-6">
-                <h3 className="font-display text-2xl text-text-primary">{data.values.headline}</h3>
+                <h3>{data.values.headline}</h3>
                 <ul className="space-y-4">
                   {data.values.items.map((value: string, idx: number) => (
                     <li key={idx} className="flex items-start space-x-3">
@@ -183,7 +183,7 @@ export default async function AboutPageView() {
       <section className="section-padding bg-slate-dark">
         <div className="container-custom">
           <div className="mb-16">
-            <h2 className="font-display text-3xl md:text-4xl text-text-primary mb-4">
+            <h2 className="mb-4">
               Leadership Team
             </h2>
             <p className="text-lg text-text-secondary max-w-2xl">
@@ -210,7 +210,7 @@ export default async function AboutPageView() {
                   </div>
                 )}
                 <div className="space-y-2">
-                  <h3 className="font-display text-xl text-text-primary">{leader.name}</h3>
+                  <h3>{leader.name}</h3>
                   <p className="text-sm text-solar font-semibold">{leader.title}</p>
                 </div>
                 <p className="text-sm text-text-secondary leading-relaxed flex-grow">
@@ -238,7 +238,7 @@ export default async function AboutPageView() {
       <section className="section-padding">
         <div className="container-custom">
           <div className="mb-16">
-            <h2 className="font-display text-3xl md:text-4xl text-text-primary mb-4">
+            <h2 className="mb-4">
               Global Presence
             </h2>
             <p className="text-lg text-text-secondary max-w-2xl">
@@ -249,7 +249,7 @@ export default async function AboutPageView() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {data.offices.map((office: any, idx: number) => (
               <div key={idx} className="card p-8 space-y-4">
-                <h3 className="font-display text-2xl text-text-primary">{office.region}</h3>
+                <h3>{office.region}</h3>
                 <div className="space-y-3 text-sm">
                   <div>
                     <p className="text-xs text-text-muted uppercase tracking-widest mb-1">
@@ -281,7 +281,7 @@ export default async function AboutPageView() {
         <div className="container-custom">
           <div className="max-w-3xl mx-auto space-y-8">
             <div className="text-center space-y-4">
-              <h2 className="font-display text-3xl md:text-4xl text-text-primary">
+              <h2>
                 {data.esg.headline}
               </h2>
               <p className="text-lg text-text-secondary">
@@ -292,7 +292,7 @@ export default async function AboutPageView() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {data.esg.sections.map((section: any, idx: number) => (
                 <div key={idx} className="card p-8 space-y-6">
-                  <h3 className="font-display text-2xl text-text-primary">{section.title}</h3>
+                  <h3>{section.title}</h3>
                   <div className="space-y-4">
                     {section.metrics.map((metric: any, midx: number) => (
                       <div key={midx} className="flex justify-between items-center pb-4 border-b border-white/[0.08]">

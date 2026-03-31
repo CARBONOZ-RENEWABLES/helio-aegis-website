@@ -96,7 +96,7 @@ export default async function CapabilitiesPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 md:px-12 lg:px-20 overflow-hidden">
+      <section className="relative pt-32 pb-20 overflow-hidden" style={{ paddingLeft: '1.25rem', paddingRight: '1.25rem' }}>
         <div className="absolute inset-0 grid-texture opacity-10" />
         <div className="absolute top-0 right-0 w-96 h-96 bg-solar rounded-full opacity-5 blur-3xl" />
 
@@ -106,14 +106,14 @@ export default async function CapabilitiesPage() {
               <div className="w-8 h-px bg-gradient-to-r from-solar to-transparent" />
               <span className="eyebrow">Capabilities</span>
             </div>
-            <h1 className="font-display text-5xl md:text-6xl leading-tight tracking-tight">
+            <h1>
               <span className="text-text-primary">Two Disciplines.</span>
               <br />
               <span className="bg-gradient-to-r from-solar to-hydrogen bg-clip-text text-transparent">
                 One Platform.
               </span>
             </h1>
-            <p className="text-xl text-text-secondary leading-relaxed max-w-2xl">
+            <p className="subheadline text-text-secondary leading-relaxed max-w-2xl">
               Integrated project management and energy finance capabilities enabling
               institutional capital to deploy at scale in renewable infrastructure.
             </p>
@@ -130,7 +130,7 @@ export default async function CapabilitiesPage() {
               <div className={`space-y-8 ${idx % 2 === 1 ? 'lg:order-2' : ''}`}>
                 <div className="space-y-4">
                   <div className="text-5xl">{cap.icon}</div>
-                  <h2 className="font-display text-3xl md:text-4xl text-text-primary">
+                  <h2>
                     {cap.title}
                   </h2>
                   <p className="text-lg text-text-secondary leading-relaxed">
@@ -161,7 +161,7 @@ export default async function CapabilitiesPage() {
               {/* Right: Stats Card */}
               <div className={`${idx % 2 === 1 ? 'lg:order-1' : ''}`}>
                 <div className="card p-8 space-y-6">
-                  <h3 className="font-display text-2xl text-text-primary">Key Metrics</h3>
+                  <h3>Key Metrics</h3>
                   <div className="space-y-6">
                     {cap.stats.map((stat, sidx) => (
                       <div key={sidx} className="pb-6 border-b border-white/[0.08] last:border-0 last:pb-0">
@@ -184,7 +184,7 @@ export default async function CapabilitiesPage() {
         <div className="container-custom">
           <div className="max-w-3xl mx-auto space-y-8">
             <div className="text-center space-y-4">
-              <h2 className="font-display text-3xl md:text-4xl text-text-primary">
+              <h2>
                 The Integrated Advantage
               </h2>
               <p className="text-lg text-text-secondary">
@@ -209,7 +209,7 @@ export default async function CapabilitiesPage() {
                 },
               ].map((item, idx) => (
                 <div key={idx} className="card p-8 space-y-4">
-                  <h3 className="font-display text-xl text-text-primary">{item.title}</h3>
+                  <h3>{item.title}</h3>
                   <p className="text-text-secondary">{item.description}</p>
                 </div>
               ))}
