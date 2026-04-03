@@ -1,13 +1,10 @@
 'use client';
 
-import Navigation from '@/components/shared/Navigation';
-import Footer from '@/components/shared/Footer';
 import FAQSectionClient from '@/components/FAQ/FAQSectionClient';
 
 export default function InvestorsClient({ data, faqs }: any) {
   return (
-    <main className="w-full bg-void">
-      <Navigation />
+    <>
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden" style={{ paddingLeft: '1.25rem', paddingRight: '1.25rem' }}>
@@ -57,7 +54,7 @@ export default function InvestorsClient({ data, faqs }: any) {
             <h2 className="mb-4">
               Fund Structures
             </h2>
-            <p className="text-lg text-text-secondary max-w-2xl">
+            <p className="subheadline text-text-secondary max-w-2xl">
               Diversified fund offerings tailored to different investor risk-return profiles
               and deployment timelines.
             </p>
@@ -70,7 +67,7 @@ export default function InvestorsClient({ data, faqs }: any) {
                   <h3>{fund.name}</h3>
                   <p className="text-sm text-solar font-semibold mt-1">{fund.subtitle}</p>
                 </div>
-                <p className="text-text-secondary">{fund.description}</p>
+                <p className="subheadline text-text-secondary">{fund.description}</p>
 
                 <div className="space-y-3 pt-4 border-t border-white/[0.08]">
                   <div className="flex justify-between">
@@ -119,7 +116,7 @@ export default function InvestorsClient({ data, faqs }: any) {
             <h2 className="mb-4">
               Track Record
             </h2>
-            <p className="text-lg text-text-secondary max-w-2xl">
+            <p className="subheadline text-text-secondary max-w-2xl">
               Consistent performance across market cycles with institutional-grade risk management.
             </p>
           </div>
@@ -200,7 +197,7 @@ export default function InvestorsClient({ data, faqs }: any) {
             <h2>
               Access Our Data Room
             </h2>
-            <p className="text-lg text-text-secondary">
+            <p className="subheadline text-text-secondary">
               Institutional investors can access our comprehensive due diligence materials,
               including fund documents, performance reports, ESG data, and financial statements.
             </p>
@@ -260,8 +257,6 @@ export default function InvestorsClient({ data, faqs }: any) {
       </section>
 
       <FAQSectionClient faqs={faqs} category="investors" showHeader={false} />
-
-      <Footer />
-    </main>
+    </>
   );
 }

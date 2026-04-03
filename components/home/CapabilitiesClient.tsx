@@ -19,12 +19,12 @@ export default function CapabilitiesClient({ data }: any) {
             className="flex flex-col justify-center space-y-6"
           >
             <div className="eyebrow">What We Do</div>
-            <h2 className="font-display text-3xl md:text-4xl leading-tight tracking-tight">
+            <h2>
               <span className="bg-gradient-to-r from-solar via-solar to-hydrogen bg-clip-text text-transparent whitespace-pre-line">
                 {data.sectionTitle}
               </span>
             </h2>
-            <p className="text-lg text-text-secondary leading-relaxed">
+            <p className="subheadline text-text-secondary leading-relaxed">
               {data.sectionDescription}
             </p>
             <Link
@@ -49,7 +49,7 @@ export default function CapabilitiesClient({ data }: any) {
                 className="card p-8 flex flex-col space-y-4 group cursor-pointer hover:border-solar/40 transition-all duration-300"
               >
                 <div className="text-4xl">{cap.icon}</div>
-                <h3 className="font-display text-xl text-text-primary group-hover:text-solar transition-colors">
+                <h3>
                   {cap.title}
                 </h3>
                 <p className="text-sm text-text-secondary leading-relaxed flex-grow">

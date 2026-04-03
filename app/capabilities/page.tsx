@@ -2,15 +2,13 @@ import Navigation from '@/components/shared/Navigation';
 import Footer from '@/components/shared/Footer';
 import Link from 'next/link';
 import FAQSectionClient from '@/components/FAQ/FAQSectionClient';
-import dbConnect, { DEMO_MODE } from '@/lib/mongodb';
+import dbConnect from '@/lib/mongodb';
 import FAQ from '@/models/FAQ';
 
 export default async function CapabilitiesPage() {
-  if (!DEMO_MODE) {
-    await dbConnect();
-  }
+  await dbConnect();
   
-  const faqs = DEMO_MODE ? [] : await FAQ.find({ status: 'published' }).sort({ category: 1, order: 1 }).lean();
+  const faqs = await FAQ.find({ status: 'published' }).sort({ category: 1, order: 1 }).lean();
 
   const capabilities = [
     {
@@ -133,7 +131,7 @@ export default async function CapabilitiesPage() {
                   <h2>
                     {cap.title}
                   </h2>
-                  <p className="text-lg text-text-secondary leading-relaxed">
+                  <p className="subheadline text-text-secondary leading-relaxed">
                     {cap.description}
                   </p>
                 </div>
@@ -187,7 +185,7 @@ export default async function CapabilitiesPage() {
               <h2>
                 The Integrated Advantage
               </h2>
-              <p className="text-lg text-text-secondary">
+              <p className="subheadline text-text-secondary">
                 Our unique combination of project development and energy finance expertise
                 creates superior outcomes for institutional capital.
               </p>
@@ -210,7 +208,7 @@ export default async function CapabilitiesPage() {
               ].map((item, idx) => (
                 <div key={idx} className="card p-8 space-y-4">
                   <h3>{item.title}</h3>
-                  <p className="text-text-secondary">{item.description}</p>
+                  <p className="subheadline text-text-secondary">{item.description}</p>
                 </div>
               ))}
             </div>

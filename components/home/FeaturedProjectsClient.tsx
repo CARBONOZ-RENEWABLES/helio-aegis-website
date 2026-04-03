@@ -68,7 +68,7 @@ export default function FeaturedProjectsClient({ projects }: { projects: Project
               <p className="text-xs text-text-muted uppercase tracking-widest font-semibold">
                 Featured Projects
               </p>
-              <h2 className="font-display text-3xl md:text-4xl leading-tight tracking-tight">
+              <h2>
                 <span className="bg-gradient-to-r from-solar via-solar to-hydrogen bg-clip-text text-transparent">
                   Active Portfolio Highlights
                 </span>
@@ -82,7 +82,7 @@ export default function FeaturedProjectsClient({ projects }: { projects: Project
               <span>→</span>
             </Link>
           </div>
-          <p className="text-lg text-text-secondary max-w-2xl">
+          <p className="subheadline text-text-secondary max-w-2xl">
             Showcase of our most significant renewable energy projects across multiple
             technologies and geographies.
           </p>
@@ -145,7 +145,7 @@ export default function FeaturedProjectsClient({ projects }: { projects: Project
                 <div className="p-6 flex flex-col flex-grow space-y-4">
                   {/* Title & Location */}
                   <div className="space-y-2">
-                    <h3 className="font-display text-lg text-text-primary group-hover:text-solar transition-colors">
+                    <h3>
                       {project.name}
                     </h3>
                     <p className="text-sm text-solar font-mono">{project.location}</p>

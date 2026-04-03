@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Navigation from '@/components/shared/Navigation';
 import Footer from '@/components/shared/Footer';
-import dbConnect, { DEMO_MODE } from '@/lib/mongodb';
+import dbConnect from '@/lib/mongodb';
 import Insight from '@/models/Insight';
 
 interface InsightPageProps {
@@ -13,11 +13,9 @@ interface InsightPageProps {
 }
 
 export async function generateMetadata({ params }: InsightPageProps): Promise<Metadata> {
-  if (!DEMO_MODE) {
-    await dbConnect();
-  }
+  await dbConnect();
   
-  const insight = DEMO_MODE ? null : await Insight.findOne({ slug: params.id, status: 'published' }).lean() as any;
+  const insight = await Insight.findOne({ slug: params.id, status: 'published' }).lean() as any;
 
   if (!insight) {
     return {
@@ -33,11 +31,9 @@ export async function generateMetadata({ params }: InsightPageProps): Promise<Me
 }
 
 export default async function InsightPage({ params }: InsightPageProps) {
-  if (!DEMO_MODE) {
-    await dbConnect();
-  }
+  await dbConnect();
   
-  const insight = DEMO_MODE ? null : await Insight.findOne({ slug: params.id, status: 'published' }).lean();
+  const insight = await Insight.findOne({ slug: params.id, status: 'published' }).lean();
 
   if (!insight) {
     return (
@@ -45,8 +41,8 @@ export default async function InsightPage({ params }: InsightPageProps) {
         <Navigation />
         <main className="w-full bg-void min-h-screen flex items-center justify-center">
           <div className="text-center space-y-4">
-            <h1 className="font-display text-4xl text-text-primary">Insight Not Found</h1>
-            <p className="text-text-secondary">The article you&apos;re looking for doesn&apos;t exist.</p>
+            <h1>Insight Not Found</h1>
+            <p className="subheadline text-text-secondary">The article you&apos;re looking for doesn&apos;t exist.</p>
             <Link href="/insights" className="text-solar hover:text-solar-dim transition-colors">
               Back to Insights →
             </Link>
@@ -58,7 +54,7 @@ export default async function InsightPage({ params }: InsightPageProps) {
   }
 
   const insightData: any = insight;
-  const relatedInsights = DEMO_MODE ? [] : await Insight.find({
+  const relatedInsights = await Insight.find({
     _id: { $ne: (insight as any)?._id },
     category: (insight as any)?.category,
     status: 'published'
@@ -103,7 +99,7 @@ export default async function InsightPage({ params }: InsightPageProps) {
                 </span>
               </div>
 
-              <h1 className="font-display text-5xl md:text-6xl leading-tight text-text-primary">
+              <h1>
                 {insightData.title}
               </h1>
 
@@ -149,7 +145,7 @@ export default async function InsightPage({ params }: InsightPageProps) {
               {/* Main Content */}
               <div className="lg:col-span-2 space-y-6">
                 <div className="prose prose-invert max-w-none">
-                  <p className="text-lg text-text-secondary leading-relaxed whitespace-pre-wrap">
+                  <p className="subheadline text-text-secondary leading-relaxed whitespace-pre-wrap">
                     {insightData.content}
                   </p>
                 </div>
@@ -160,7 +156,7 @@ export default async function InsightPage({ params }: InsightPageProps) {
                 {/* Key Takeaways */}
                 {insightData.keyTakeaways && insightData.keyTakeaways.length > 0 && (
                   <div className="card p-6 space-y-4 sticky top-20">
-                    <h3 className="font-display text-xl text-text-primary">Key Takeaways</h3>
+                    <h3>Key Takeaways</h3>
                     <ul className="space-y-3">
                       {insightData.keyTakeaways.map((takeaway: string, idx: number) => (
                         <li key={idx} className="flex gap-3">
@@ -175,7 +171,7 @@ export default async function InsightPage({ params }: InsightPageProps) {
                 {/* Author Card */}
                 {insightData.author && (
                   <div className="card p-6 space-y-4">
-                    <h3 className="font-display text-lg text-text-primary">About the Author</h3>
+                    <h3>About the Author</h3>
                     <div className="space-y-2">
                       <p className="font-semibold text-text-primary">{insightData.author}</p>
                       {insightData.authorRole && (
@@ -193,7 +189,7 @@ export default async function InsightPage({ params }: InsightPageProps) {
         {relatedInsights.length > 0 && (
           <section className="section-padding bg-slate-dark">
             <div className="container-custom">
-              <h2 className="font-display text-3xl text-text-primary mb-12">Related Insights</h2>
+              <h2 className="mb-12">Related Insights</h2>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {relatedInsights.map((related: any) => (
@@ -218,7 +214,7 @@ export default async function InsightPage({ params }: InsightPageProps) {
                       })}
                     </p>
 
-                    <h3 className="font-display text-lg text-text-primary group-hover:text-solar transition-colors">
+                    <h3>
                       {related.title}
                     </h3>
 
@@ -241,10 +237,10 @@ export default async function InsightPage({ params }: InsightPageProps) {
         <section className="section-padding">
           <div className="container-custom max-w-2xl">
             <div className="card p-12 text-center space-y-6">
-              <h2 className="font-display text-3xl text-text-primary">
+              <h2>
                 Stay Updated on Energy Markets
               </h2>
-              <p className="text-lg text-text-secondary">
+              <p className="subheadline text-text-secondary">
                 Subscribe to our monthly newsletter for market insights, policy updates, and investment opportunities.
               </p>
               <form className="flex flex-col sm:flex-row gap-3">

@@ -76,51 +76,51 @@
 
   h2 {
     @apply font-display;
-    font-size: 1.75rem;
+    font-size: 2rem;
     font-weight: 600;
     line-height: 1.2;
   }
 
   @media (min-width: 640px) {
     h2 {
-      font-size: 2rem;
+      font-size: 2.25rem;
     }
   }
 
   @media (min-width: 768px) {
     h2 {
-      font-size: 2.25rem;
+      font-size: 2.75rem;
     }
   }
 
   @media (min-width: 1024px) {
     h2 {
-      font-size: 2.5rem;
+      font-size: 3.25rem;
     }
   }
 
   h3 {
     @apply font-display;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 500;
     line-height: 1.3;
   }
 
   @media (min-width: 640px) {
     h3 {
-      font-size: 1.375rem;
+      font-size: 1.75rem;
     }
   }
 
   @media (min-width: 768px) {
     h3 {
-      font-size: 1.5rem;
+      font-size: 2rem;
     }
   }
 
   @media (min-width: 1024px) {
     h3 {
-      font-size: 1.75rem;
+      font-size: 2.25rem;
     }
   }
 
@@ -133,26 +133,38 @@
     line-height: 1.6;
   }
 
+  @media (min-width: 768px) {
+    p {
+      font-size: 1.125rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    p {
+      font-size: 1.25rem;
+    }
+  }
+
   .subheadline {
-    font-size: 1rem;
+    font-size: 1.125rem;
     line-height: 1.6;
   }
 
   @media (min-width: 640px) {
     .subheadline {
-      font-size: 1.125rem;
+      font-size: 1.25rem;
     }
   }
 
   @media (min-width: 768px) {
     .subheadline {
-      font-size: 1.25rem;
+      font-size: 1.5rem;
     }
   }
 
   @media (min-width: 1024px) {
     .subheadline {
-      font-size: 1.5rem;
+      font-size: 1.75rem;
     }
   }
 }

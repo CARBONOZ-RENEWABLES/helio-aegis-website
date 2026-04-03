@@ -1,14 +1,12 @@
-import dbConnect, { DEMO_MODE } from '@/lib/mongodb';
+import dbConnect from '@/lib/mongodb';
 import Insight from '@/models/Insight';
 import InsightsTeaserClient from './InsightsTeaserClient';
 import { demoInsights } from '@/lib/demo-data';
 
 export default async function InsightsTeaser() {
-  if (!DEMO_MODE) {
-    await dbConnect();
-  }
+  await dbConnect();
   
-  const insights = DEMO_MODE ? demoInsights : await Insight.find({ 
+  const insights = await Insight.find({ 
     status: 'published',
     featured: true 
   })
@@ -16,7 +14,7 @@ export default async function InsightsTeaser() {
     .limit(3)
     .lean();
 
-  const serializedInsights = DEMO_MODE ? insights : insights.map((insight: any) => ({
+  const serializedInsights = insights.map((insight: any) => ({
     id: insight._id.toString(),
     slug: insight.slug,
     type: insight.type,

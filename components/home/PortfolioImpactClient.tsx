@@ -30,12 +30,12 @@ export default function PortfolioImpactClient({ data }: any) {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="font-display text-3xl md:text-4xl leading-tight tracking-tight">
+          <h2>
             <span className="bg-gradient-to-r from-solar via-solar to-hydrogen bg-clip-text text-transparent">
               {data?.sectionTitle || 'Scale built on executed deals.'}
             </span>
           </h2>
-          <p className="text-lg text-text-secondary max-w-2xl mx-auto">
+          <p className="subheadline text-text-secondary max-w-2xl mx-auto">
             {data?.sectionSubtitle || 'Since 2012, Helio Aegis has structured and delivered:'}
           </p>
         </motion.div>

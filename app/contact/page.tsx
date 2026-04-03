@@ -2,17 +2,15 @@ import Navigation from '@/components/shared/Navigation';
 import Footer from '@/components/shared/Footer';
 import FAQSectionClient from '@/components/FAQ/FAQSectionClient';
 import ContactFormClient from '@/components/contact/ContactFormClient';
-import dbConnect, { DEMO_MODE } from '@/lib/mongodb';
+import dbConnect from '@/lib/mongodb';
 import FAQ from '@/models/FAQ';
 import ContactPage from '@/models/ContactPage';
 
 export default async function ContactPageView() {
-  if (!DEMO_MODE) {
-    await dbConnect();
-  }
+  await dbConnect();
   
-  const faqs = DEMO_MODE ? [] : await FAQ.find({ status: 'published' }).sort({ category: 1, order: 1 }).lean();
-  const contactData = DEMO_MODE ? null : await ContactPage.findOne({}).lean() as any;
+  const faqs = await FAQ.find({ status: 'published' }).sort({ category: 1, order: 1 }).lean();
+  const contactData = await ContactPage.findOne({}).lean() as any;
 
   const defaultData = {
     hero: {

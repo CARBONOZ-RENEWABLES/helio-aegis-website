@@ -1,7 +1,5 @@
 'use client';
 
-import Navigation from '@/components/shared/Navigation';
-import Footer from '@/components/shared/Footer';
 import Link from 'next/link';
 
 interface Insight {
@@ -24,8 +22,7 @@ export default function InsightsClient({ insights }: { insights: Insight[] }) {
   };
 
   return (
-    <main className="w-full bg-void">
-      <Navigation />
+    <>
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden" style={{ paddingLeft: '1.25rem', paddingRight: '1.25rem' }}>
@@ -153,8 +150,6 @@ export default function InsightsClient({ insights }: { insights: Insight[] }) {
           </div>
         </div>
       </section>
-
-      <Footer />
-    </main>
+    </>
   );
 }

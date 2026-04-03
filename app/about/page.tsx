@@ -1,17 +1,15 @@
 import Navigation from '@/components/shared/Navigation';
 import Footer from '@/components/shared/Footer';
-import dbConnect, { DEMO_MODE } from '@/lib/mongodb';
+import dbConnect from '@/lib/mongodb';
 import TeamMember from '@/models/TeamMember';
 import AboutPage from '@/models/AboutPage';
 import Image from 'next/image';
 
 export default async function AboutPageView() {
-  if (!DEMO_MODE) {
-    await dbConnect();
-  }
+  await dbConnect();
   
-  const teamMembers = DEMO_MODE ? [] : await TeamMember.find({ status: 'published' }).sort({ order: 1 }).lean();
-  const aboutData = DEMO_MODE ? null : await AboutPage.findOne({}).lean();
+  const teamMembers = await TeamMember.find({ status: 'published' }).sort({ order: 1 }).lean();
+  const aboutData = await AboutPage.findOne({}).lean();
 
   const defaultData = {
     hero: {
@@ -146,7 +144,7 @@ export default async function AboutPageView() {
                 <h2 className="mb-6">
                   {data.story.headline}
                 </h2>
-                <div className="space-y-4 text-lg text-text-secondary leading-relaxed">
+                <div className="space-y-4 subheadline text-text-secondary leading-relaxed">
                   {data.story.paragraphs.map((para: string, idx: number) => (
                     <p key={idx}>{para}</p>
                   ))}
@@ -158,7 +156,7 @@ export default async function AboutPageView() {
             <div className="space-y-8">
               <div className="card p-8 space-y-4">
                 <h3>{data.mission.headline}</h3>
-                <p className="text-text-secondary leading-relaxed">
+                <p className="subheadline text-text-secondary leading-relaxed">
                   {data.mission.text}
                 </p>
               </div>
@@ -186,7 +184,7 @@ export default async function AboutPageView() {
             <h2 className="mb-4">
               Leadership Team
             </h2>
-            <p className="text-lg text-text-secondary max-w-2xl">
+            <p className="subheadline text-text-secondary max-w-2xl">
               Experienced executives with deep expertise in renewable energy, project finance,
               and institutional capital markets.
             </p>
@@ -241,7 +239,7 @@ export default async function AboutPageView() {
             <h2 className="mb-4">
               Global Presence
             </h2>
-            <p className="text-lg text-text-secondary max-w-2xl">
+            <p className="subheadline text-text-secondary max-w-2xl">
               Operating across multiple continents with regional expertise and local partnerships.
             </p>
           </div>
@@ -284,7 +282,7 @@ export default async function AboutPageView() {
               <h2>
                 {data.esg.headline}
               </h2>
-              <p className="text-lg text-text-secondary">
+              <p className="subheadline text-text-secondary">
                 {data.esg.subheadline}
               </p>
             </div>

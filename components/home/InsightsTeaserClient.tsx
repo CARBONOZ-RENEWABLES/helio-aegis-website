@@ -38,12 +38,12 @@ export default function InsightsTeaserClient({ insights }: { insights: Insight[]
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="font-display text-3xl md:text-4xl leading-tight tracking-tight mb-4">
+          <h2 className="mb-4">
             <span className="bg-gradient-to-r from-solar via-solar to-hydrogen bg-clip-text text-transparent">
               Intelligence for Energy Markets
             </span>
           </h2>
-          <p className="text-lg text-text-secondary max-w-2xl mx-auto">
+          <p className="subheadline text-text-secondary max-w-2xl mx-auto">
             Market research, policy analysis, and thought leadership from our team.
           </p>
         </motion.div>
@@ -75,7 +75,7 @@ export default function InsightsTeaserClient({ insights }: { insights: Insight[]
               <p className="text-xs text-text-muted font-mono">{insight.date}</p>
 
               {/* Title */}
-              <h3 className="font-display text-xl md:text-2xl text-text-primary group-hover:text-solar transition-colors">
+              <h3>
                 {insight.title}
               </h3>
 

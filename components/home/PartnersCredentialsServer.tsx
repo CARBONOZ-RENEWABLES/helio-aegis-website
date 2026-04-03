@@ -1,4 +1,4 @@
-import dbConnect, { DEMO_MODE } from '@/lib/mongodb';
+import dbConnect from '@/lib/mongodb';
 import Homepage from '@/models/Homepage';
 import PartnersCredentialsClient from './PartnersCredentialsClient';
 
@@ -23,8 +23,7 @@ const defaultPartnersData = {
 
 export default async function PartnersCredentialsServer() {
   try {
-    if (!DEMO_MODE) { await dbConnect(); }
-    const homepage: any = DEMO_MODE ? null : await Homepage.findOne({}).lean();
+    const homepage: any = await Homepage.findOne({}).lean();
     
     const partnersData = {
       headline: homepage?.partnersSection?.headline || defaultPartnersData.headline,

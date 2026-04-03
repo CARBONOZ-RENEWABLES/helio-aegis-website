@@ -20,8 +20,8 @@ export default async function ProjectDetailPage({ params }: { params: { id: stri
         <Navigation />
         <section className="section-padding text-center">
           <div className="container-custom">
-            <h1 className="font-display text-4xl text-text-primary mb-4">Project Not Found</h1>
-            <p className="text-text-secondary mb-8">The project you&apos;re looking for doesn&apos;t exist.</p>
+            <h1 className="mb-4">Project Not Found</h1>
+            <p className="subheadline text-text-secondary mb-8">The project you&apos;re looking for doesn&apos;t exist.</p>
             <Link href="/portfolio" className="btn-primary">
               Back to Portfolio
             </Link>
@@ -58,8 +58,8 @@ export default async function ProjectDetailPage({ params }: { params: { id: stri
                 <span className="text-text-muted">/</span>
                 <span className="text-text-secondary">{projectData.basicInfo?.name}</span>
               </div>
-              <h1 className="font-display text-5xl text-text-primary">{projectData.basicInfo?.name}</h1>
-              <p className="text-lg text-text-secondary">
+              <h1>{projectData.basicInfo?.name}</h1>
+              <p className="subheadline text-text-secondary">
                 {projectData.basicInfo?.location?.city}, {projectData.basicInfo?.location?.country}
               </p>
             </div>
@@ -69,7 +69,7 @@ export default async function ProjectDetailPage({ params }: { params: { id: stri
 
       {/* Quick Stats */}
       <section className="border-b border-white/[0.08] bg-gradient-to-r from-void via-slate-dark/30 to-void">
-        <div className="container-custom px-6 md:px-12 lg:px-20 py-8">
+        <div className="container-custom py-8" style={{ paddingLeft: '1.25rem', paddingRight: '1.25rem' }}>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div>
               <p className="text-xs text-text-muted uppercase tracking-widest mb-2">Capacity</p>
@@ -98,8 +98,8 @@ export default async function ProjectDetailPage({ params }: { params: { id: stri
             {/* Left: Description */}
             <div className="lg:col-span-2 space-y-8">
               <div className="space-y-4">
-                <h2 className="font-display text-3xl text-text-primary">Project Overview</h2>
-                <p className="text-lg text-text-secondary leading-relaxed">
+                <h2>Project Overview</h2>
+                <p className="subheadline text-text-secondary leading-relaxed">
                   {projectData.basicInfo?.fullDescription || projectData.basicInfo?.shortDescription}
                 </p>
               </div>
@@ -107,7 +107,7 @@ export default async function ProjectDetailPage({ params }: { params: { id: stri
               {/* Key Metrics */}
               {projectData.technicalSpecs && (
                 <div className="card p-8 space-y-6">
-                  <h3 className="font-display text-2xl text-text-primary">Key Metrics</h3>
+                  <h3>Key Metrics</h3>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                     {projectData.technicalSpecs.annualGenerationMWh && (
                       <div>
@@ -140,7 +140,7 @@ export default async function ProjectDetailPage({ params }: { params: { id: stri
               {/* Timeline */}
               {projectData.timeline && projectData.timeline.length > 0 && (
                 <div className="space-y-4">
-                  <h3 className="font-display text-2xl text-text-primary">Project Timeline</h3>
+                  <h3>Project Timeline</h3>
                   <div className="space-y-3">
                     {projectData.timeline.map((item: any, idx: number) => (
                       <div
@@ -175,7 +175,7 @@ export default async function ProjectDetailPage({ params }: { params: { id: stri
               {/* Financial Highlights */}
               {projectData.financialHighlights && (
                 <div className="card p-8 space-y-4">
-                  <h3 className="font-display text-xl text-text-primary">Financial Highlights</h3>
+                  <h3>Financial Highlights</h3>
                   <div className="space-y-3">
                     {projectData.financialHighlights.totalProjectCost && (
                       <div className="pb-3 border-b border-white/[0.08]">

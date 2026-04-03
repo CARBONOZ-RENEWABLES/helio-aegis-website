@@ -183,7 +183,7 @@ export default function MarketTicker() {
                       {selectedData.trend === 'up' ? '↑' : '↓'} {selectedData.change}
                     </motion.span>
                   </div>
-                  <h3 className="font-display text-xl text-text-primary">
+                  <h3>
                     {selectedData.label}
                   </h3>
                 </div>

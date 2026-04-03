@@ -1,11 +1,10 @@
-import dbConnect, { DEMO_MODE } from '@/lib/mongodb';
+import dbConnect from '@/lib/mongodb';
 import Metrics from '@/models/Metrics';
 import PortfolioImpactClient from './PortfolioImpactClient';
 
 export default async function PortfolioImpact() {
-  if (!DEMO_MODE) { await dbConnect(); }
   
-  let data: any = DEMO_MODE ? null : await Metrics.findOne().lean();
+  let data: any = await Metrics.findOne().lean();
   
   if (!data) {
     data = {

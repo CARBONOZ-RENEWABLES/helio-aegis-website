@@ -1,4 +1,4 @@
-import dbConnect, { DEMO_MODE } from '@/lib/mongodb';
+import dbConnect from '@/lib/mongodb';
 import Homepage from '@/models/Homepage';
 import InvestmentThesisClient from './InvestmentThesisClient';
 
@@ -61,8 +61,7 @@ const defaultInvestmentData = {
 
 export default async function InvestmentThesisServer() {
   try {
-    if (!DEMO_MODE) { await dbConnect(); }
-    const homepage: any = DEMO_MODE ? null : await Homepage.findOne({}).lean();
+    const homepage: any = await Homepage.findOne({}).lean();
     
     const investmentData = {
       eyebrowText: homepage?.investmentSection?.eyebrowText || defaultInvestmentData.eyebrowText,

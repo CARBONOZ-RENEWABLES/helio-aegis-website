@@ -2,8 +2,6 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import Navigation from '@/components/shared/Navigation';
-import Footer from '@/components/shared/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -45,9 +43,7 @@ export default function PortfolioClient({ projects: allProjects }: { projects: P
   const statuses = ['All', ...new Set(allProjects.map((p) => p.status))];
 
   return (
-    <main className="w-full bg-void">
-      <Navigation />
-
+    <>
       {/* Hero */}
       <section className="pt-32 pb-16 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-slate-dark to-void">
         <div className="container-custom">
@@ -264,8 +260,6 @@ export default function PortfolioClient({ projects: allProjects }: { projects: P
           )}
         </div>
       </section>
-
-      <Footer />
-    </main>
+    </>
   );
 }

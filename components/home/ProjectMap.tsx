@@ -34,7 +34,7 @@ export default function ProjectMap() {
           transition={{ duration: 0.5 }}
           className="mb-8"
         >
-          <h2 className="font-display text-3xl md:text-4xl leading-tight tracking-tight mb-6">
+          <h2 className="mb-6">
             <span className="bg-gradient-to-r from-solar via-solar to-hydrogen bg-clip-text text-transparent">
               Global Project Presence
             </span>

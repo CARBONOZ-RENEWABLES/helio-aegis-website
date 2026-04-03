@@ -94,7 +94,7 @@ export default function CapabilityDetailPage({ params }: { params: { slug: strin
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-6 md:px-12 lg:px-20 overflow-hidden">
+      <section className="relative pt-32 pb-20 overflow-hidden" style={{ paddingLeft: '1.25rem', paddingRight: '1.25rem' }}>
         <div className="absolute inset-0 grid-texture opacity-10" />
         <div className="absolute top-0 right-0 w-96 h-96 bg-solar rounded-full opacity-5 blur-3xl" />
 
@@ -108,12 +108,12 @@ export default function CapabilityDetailPage({ params }: { params: { slug: strin
               <span className="eyebrow">Capabilities</span>
             </div>
             <div className="text-5xl">{capability.icon}</div>
-            <h1 className="font-display text-5xl md:text-6xl leading-tight tracking-tight">
+            <h1>
               <span className="bg-gradient-to-r from-solar to-hydrogen bg-clip-text text-transparent">
                 {capability.title}
               </span>
             </h1>
-            <p className="text-xl text-text-secondary leading-relaxed">
+            <p className="subheadline text-text-secondary leading-relaxed">
               {capability.hero}
             </p>
           </div>
@@ -122,7 +122,7 @@ export default function CapabilityDetailPage({ params }: { params: { slug: strin
 
       {/* Stats Strip */}
       <section className="border-y border-white/[0.08] bg-gradient-to-r from-void via-slate-dark/50 to-void">
-        <div className="container-custom px-6 md:px-12 lg:px-20 py-12">
+        <div className="container-custom py-12" style={{ paddingLeft: '1.25rem', paddingRight: '1.25rem' }}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {capability.stats.map((stat: any, idx: number) => (
               <div key={idx} className="space-y-2">
@@ -140,10 +140,10 @@ export default function CapabilityDetailPage({ params }: { params: { slug: strin
       <section className="section-padding">
         <div className="container-custom">
           <div className="mb-16">
-            <h2 className="font-display text-3xl md:text-4xl text-text-primary mb-4">
+            <h2 className="mb-4">
               Services
             </h2>
-            <p className="text-lg text-text-secondary max-w-2xl">
+            <p className="subheadline text-text-secondary max-w-2xl">
               Comprehensive capabilities across the full value chain.
             </p>
           </div>
@@ -151,8 +151,8 @@ export default function CapabilityDetailPage({ params }: { params: { slug: strin
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {capability.services.map((service: any, idx: number) => (
               <div key={idx} className="card p-8 space-y-4">
-                <h3 className="font-display text-xl text-text-primary">{service.name}</h3>
-                <p className="text-text-secondary">{service.description}</p>
+                <h3>{service.name}</h3>
+                <p className="subheadline text-text-secondary">{service.description}</p>
               </div>
             ))}
           </div>
@@ -163,10 +163,10 @@ export default function CapabilityDetailPage({ params }: { params: { slug: strin
       <section className="section-padding bg-slate-dark">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center space-y-8">
-            <h2 className="font-display text-3xl md:text-4xl text-text-primary">
+            <h2>
               Ready to discuss your project?
             </h2>
-            <p className="text-lg text-text-secondary">
+            <p className="subheadline text-text-secondary">
               Our team is available to discuss how our {capability.title.toLowerCase()} capabilities can support your objectives.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

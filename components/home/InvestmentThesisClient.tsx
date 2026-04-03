@@ -47,12 +47,12 @@ export default function InvestmentThesisClient({ data }: { data: InvestmentData 
             className="flex flex-col space-y-8"
           >
             <div className="eyebrow">{data.eyebrowText}</div>
-            <h2 className="font-display text-3xl md:text-4xl leading-tight tracking-tight">
+            <h2>
               <span className="bg-gradient-to-r from-solar via-solar to-hydrogen bg-clip-text text-transparent">
                 {data.headline}
               </span>
             </h2>
-            <p className="text-lg text-text-secondary leading-relaxed">
+            <p className="subheadline text-text-secondary leading-relaxed">
               {data.bodyText}
             </p>
 
@@ -100,7 +100,7 @@ export default function InvestmentThesisClient({ data }: { data: InvestmentData 
               className="card p-8 space-y-6"
             >
               <div>
-                <h3 className="font-display text-2xl text-text-primary mb-2">
+                <h3>
                   {activeContent?.title}
                 </h3>
                 <p className="text-text-secondary">{activeContent?.content}</p>

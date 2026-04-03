@@ -52,14 +52,14 @@ export default function CTASectionClient({ data }: { data: CTAData }) {
           className="text-center space-y-8"
         >
           {/* Headline */}
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl leading-tight tracking-tight">
+          <h2>
             <span className="bg-gradient-to-r from-solar via-solar to-hydrogen bg-clip-text text-transparent">
               {data.headline}
             </span>
           </h2>
 
           {/* Subheadline */}
-          <p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed">
+          <p className="subheadline text-text-secondary max-w-2xl mx-auto leading-relaxed">
             {data.subheadline}
           </p>
 

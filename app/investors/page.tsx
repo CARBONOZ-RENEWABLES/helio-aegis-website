@@ -1,14 +1,14 @@
-import dbConnect, { DEMO_MODE } from '@/lib/mongodb';
+import dbConnect from '@/lib/mongodb';
 import InvestorsPage from '@/models/InvestorsPage';
 import FAQ from '@/models/FAQ';
 import InvestorsClient from './InvestorsClient';
+import Navigation from '@/components/shared/Navigation';
+import Footer from '@/components/shared/Footer';
 
 export default async function InvestorsPageServer() {
-  if (!DEMO_MODE) {
-    await dbConnect();
-  }
+  await dbConnect();
   
-  let data: any = DEMO_MODE ? null : await InvestorsPage.findOne().lean();
+  let data: any = await InvestorsPage.findOne().lean();
   
   if (!data) {
     data = {
@@ -28,7 +28,13 @@ export default async function InvestorsPageServer() {
     };
   }
 
-  const faqs = DEMO_MODE ? [] : await FAQ.find({ status: 'published', category: 'investors' }).sort({ order: 1 }).lean();
+  const faqs = await FAQ.find({ status: 'published', category: 'investors' }).sort({ order: 1 }).lean();
 
-  return <InvestorsClient data={JSON.parse(JSON.stringify(data))} faqs={JSON.parse(JSON.stringify(faqs))} />;
+  return (
+    <main className="w-full bg-void">
+      <Navigation />
+      <InvestorsClient data={JSON.parse(JSON.stringify(data))} faqs={JSON.parse(JSON.stringify(faqs))} />
+      <Footer />
+    </main>
+  );
 }

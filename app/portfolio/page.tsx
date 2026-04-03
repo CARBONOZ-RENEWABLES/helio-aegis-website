@@ -1,18 +1,17 @@
-import dbConnect, { DEMO_MODE } from '@/lib/mongodb';
+import dbConnect from '@/lib/mongodb';
 import Project from '@/models/Project';
 import PortfolioClient from './PortfolioClient';
-import { demoProjects } from '@/lib/demo-data';
+import Navigation from '@/components/shared/Navigation';
+import Footer from '@/components/shared/Footer';
 
 export default async function PortfolioPage() {
-  if (!DEMO_MODE) {
-    await dbConnect();
-  }
+  await dbConnect();
   
-  const projects = DEMO_MODE ? demoProjects : await Project.find({ status: 'published' })
+  const projects = await Project.find({ status: 'published' })
     .sort({ 'basicInfo.order': 1, updatedAt: -1 })
     .lean();
 
-  const serializedProjects = DEMO_MODE ? projects : projects.map((project: any) => ({
+  const serializedProjects = projects.map((project: any) => ({
     id: project._id.toString(),
     slug: project.slug,
     name: project.basicInfo?.name || 'Untitled',
@@ -22,8 +21,14 @@ export default async function PortfolioPage() {
     status: project.basicInfo?.status?.toUpperCase() || 'DEVELOPMENT',
     cod: project.basicInfo?.codDate || 'TBD',
     region: project.basicInfo?.location?.region?.toUpperCase() || 'AMERICAS',
-    image: project.media?.heroImage || 'https://images.unsplash.com/photo-1509391366360-2e938aa1ef14?w=800&h=600&fit=crop',
+    image: project.media?.heroImage || 'https://placehold.co/800x600/1a1a1a/F5A623?text=Project',
   }));
 
-  return <PortfolioClient projects={serializedProjects as any} />;
+  return (
+    <main className="w-full bg-void">
+      <Navigation />
+      <PortfolioClient projects={serializedProjects as any} />
+      <Footer />
+    </main>
+  );
 }

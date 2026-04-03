@@ -1,14 +1,12 @@
 import { NextResponse } from 'next/server';
-import dbConnect, { DEMO_MODE } from '@/lib/mongodb';
+import dbConnect from '@/lib/mongodb';
 import Homepage from '@/models/Homepage';
 
 export async function GET() {
   try {
-    if (!DEMO_MODE) {
-      await dbConnect();
-    }
+    await dbConnect();
     
-    const homepage = DEMO_MODE ? null : await Homepage.findOne();
+    const homepage = await Homepage.findOne();
     const apiKey = homepage?.marketTickerApiKey;
 
     // Default fallback data

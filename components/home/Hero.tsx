@@ -1,4 +1,4 @@
-import dbConnect, { DEMO_MODE } from '@/lib/mongodb';
+import dbConnect from '@/lib/mongodb';
 import Homepage from '@/models/Homepage';
 import HeroClient from './HeroClient';
 import { demoHomepage } from '@/lib/demo-data';
@@ -6,7 +6,7 @@ import { demoHomepage } from '@/lib/demo-data';
 export default async function Hero() {
   await dbConnect();
   
-  let homepage: any = DEMO_MODE ? demoHomepage : await Homepage.findOne({}).lean();
+  let homepage: any = await Homepage.findOne({}).lean();
   
   const heroData = {
     eyebrowText: homepage?.hero?.eyebrowText || 'Energy Finance & Project Management',
