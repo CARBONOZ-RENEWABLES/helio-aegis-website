@@ -9,6 +9,11 @@ export default async function Navigation() {
   
   if (!navigation) {
     navigation = {
+      logo: {
+        imageUrl: '/images/heliosngrlogo.png',
+        altText: 'Helios NRG'
+      },
+      siteTitle: 'Helios NRG',
       primary: [
         { label: 'About', href: '/about', order: 1 },
         { label: 'Capabilities', href: '/capabilities', order: 2 },
@@ -24,8 +29,35 @@ export default async function Navigation() {
     };
   }
 
+  // Ensure logo and siteTitle exist (for backward compatibility)
+  if (!navigation.logo) {
+    navigation.logo = {
+      imageUrl: '/images/heliosngrlogo.png',
+      altText: 'Helios NRG'
+    };
+  }
+  if (!navigation.siteTitle) {
+    navigation.siteTitle = 'Helios NRG';
+  }
+
   // Convert MongoDB objects to plain objects
-  const plainNavigation = JSON.parse(JSON.stringify(navigation));
+  const plainNavigation = {
+    logo: navigation.logo ? {
+      imageUrl: navigation.logo.imageUrl,
+      altText: navigation.logo.altText
+    } : { imageUrl: '/images/heliosngrlogo.png', altText: 'Helios NRG' },
+    siteTitle: navigation.siteTitle || 'Helios NRG',
+    primary: navigation.primary?.map((item: any) => ({
+      label: item.label,
+      href: item.href,
+      order: item.order
+    })) || [],
+    utilityRight: navigation.utilityRight?.map((item: any) => ({
+      label: item.label,
+      href: item.href,
+      variant: item.variant
+    })) || []
+  };
 
   return <NavigationClient navigation={plainNavigation} />;
 }

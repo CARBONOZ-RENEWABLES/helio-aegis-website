@@ -10,6 +10,11 @@ export async function GET() {
     
     if (!navigation) {
       navigation = await Navigation.create({
+        logo: {
+          imageUrl: '/images/heliosngrlogo.png',
+          altText: 'Helios NRG'
+        },
+        siteTitle: 'Helios NRG',
         primary: [
           { label: 'About', href: '/about', order: 1 },
           { label: 'Capabilities', href: '/capabilities', order: 2 },

@@ -14,6 +14,11 @@ export interface INavItem {
 }
 
 export interface INavigation extends Document {
+  logo: {
+    imageUrl: string;
+    altText: string;
+  };
+  siteTitle: string;
   primary: INavItem[];
   utilityLeft: Array<{ label: string; href: string }>;
   utilityRight: Array<{
@@ -36,6 +41,11 @@ export interface INavigation extends Document {
 }
 
 const NavigationSchema = new Schema<INavigation>({
+  logo: {
+    imageUrl: { type: String, default: '/images/heliosngrlogo.png' },
+    altText: { type: String, default: 'Helios NRG' }
+  },
+  siteTitle: { type: String, default: 'Helios NRG' },
   primary: [{
     label: String,
     href: String,

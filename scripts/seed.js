@@ -48,7 +48,7 @@ const sampleProjects = [
       shortDescription: 'Utility-scale solar facility in Arizona'
     },
     media: {
-      heroImage: 'https://placehold.co/800x600/1a1a1a/F5A623?text=Solar+Project'
+      heroImage: '/images/placeholders/solar.svg'
     },
     technicalSpecs: {
       annualGenerationMWh: 950000,
@@ -71,7 +71,7 @@ const sampleProjects = [
       shortDescription: 'Offshore wind installation in North Sea'
     },
     media: {
-      heroImage: 'https://placehold.co/800x600/1a1a1a/00C2FF?text=Wind+Project'
+      heroImage: '/images/placeholders/wind.svg'
     },
     technicalSpecs: {
       annualGenerationMWh: 1200000,
@@ -94,7 +94,7 @@ const sampleProjects = [
       shortDescription: 'Large-scale solar project in North Africa'
     },
     media: {
-      heroImage: 'https://placehold.co/800x600/1a1a1a/F5A623?text=Solar+Complex'
+      heroImage: '/images/placeholders/solar.svg'
     },
     technicalSpecs: {
       annualGenerationMWh: 1500000,
@@ -117,7 +117,7 @@ const sampleProjects = [
       shortDescription: 'Grid-scale battery energy storage system'
     },
     media: {
-      heroImage: 'https://placehold.co/800x600/1a1a1a/22C55E?text=Battery+Storage'
+      heroImage: '/images/placeholders/storage.svg'
     },
     technicalSpecs: {
       annualGenerationMWh: 500000,

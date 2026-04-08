@@ -3,10 +3,16 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function NavigationClient({ navigation }: { navigation: any }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const logo = navigation.logo || { imageUrl: '/images/heliosngrlogo.png', altText: 'Helios NRG' };
+  const siteTitle = navigation.siteTitle || 'Helios NRG';
+  const primaryLinks = navigation.primary || [];
+  const utilityButtons = navigation.utilityRight || [];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,9 +29,6 @@ export default function NavigationClient({ navigation }: { navigation: any }) {
       document.body.style.overflow = 'unset';
     }
   }, [isMobileMenuOpen]);
-
-  const primaryLinks = navigation.primary || [];
-  const utilityButtons = navigation.utilityRight || [];
 
   return (
     <>
@@ -52,11 +55,16 @@ export default function NavigationClient({ navigation }: { navigation: any }) {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-solar rounded-sm flex items-center justify-center">
-                <span className="text-void font-display font-bold text-xl">H</span>
-              </div>
+              <Image 
+                src={logo.imageUrl} 
+                alt={logo.altText} 
+                width={40} 
+                height={40}
+                className="h-10 w-10"
+                priority
+              />
               <span className="font-display text-xl tracking-tight hidden md:block">
-                Helios NRG
+                {siteTitle}
               </span>
             </Link>
 

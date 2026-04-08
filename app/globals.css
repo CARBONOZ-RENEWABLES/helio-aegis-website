@@ -4,6 +4,9 @@
 
 @layer base {
   :root {
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
     --color-void: #080C14;
     --color-obsidian: #0D1421;
     --color-slate-dark: #141D2E;

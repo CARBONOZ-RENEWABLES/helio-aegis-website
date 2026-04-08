@@ -1,11 +1,14 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 
 export default function FooterClient({ data }: { data: any }) {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+
+  const logo = data.logo || { imageUrl: '/images/heliosngrlogo.png', altText: 'Helios NRG' };
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,9 +59,13 @@ export default function FooterClient({ data }: { data: any }) {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="w-8 h-8 bg-solar rounded-sm flex items-center justify-center">
-                <span className="text-void font-display font-bold">H</span>
-              </div>
+              <Image 
+                src={logo.imageUrl} 
+                alt={logo.altText} 
+                width={32} 
+                height={32}
+                className="h-8 w-8"
+              />
               <span className="font-display text-lg">{data.brand.name}</span>
             </div>
             <p className="text-sm text-text-muted leading-relaxed mb-6">

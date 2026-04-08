@@ -4,11 +4,14 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button, Input, Label } from '@/components/ui/form-elements';
 import { Save, Plus, Trash2, GripVertical, Eye } from 'lucide-react';
+import ImageUpload from './ImageUpload';
 
 export default function NavigationEditorForm({ navigation }: { navigation: any }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
+    logo: navigation.logo || { imageUrl: '/images/heliosngrlogo.png', altText: 'Helios NRG' },
+    siteTitle: navigation.siteTitle || 'Helios NRG',
     primary: navigation.primary || [],
     utilityRight: navigation.utilityRight || []
   });
@@ -94,6 +97,40 @@ export default function NavigationEditorForm({ navigation }: { navigation: any }
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Logo & Site Title */}
+        <div className="rounded-sm border border-white/[0.08] bg-obsidian/50 backdrop-blur-sm p-6 shadow-sm">
+          <div className="mb-6">
+            <h2 className="text-xl font-semibold text-text-primary font-display">Logo & Site Title</h2>
+            <p className="text-sm text-text-muted mt-1">Manage your site logo and title</p>
+          </div>
+
+          <div className="space-y-4">
+            <div>
+              <Label>Logo Image</Label>
+              <ImageUpload
+                value={formData.logo.imageUrl}
+                onChange={(url) => setFormData({ ...formData, logo: { ...formData.logo, imageUrl: url } })}
+              />
+            </div>
+            <div>
+              <Label>Logo Alt Text</Label>
+              <Input
+                value={formData.logo.altText}
+                onChange={(e) => setFormData({ ...formData, logo: { ...formData.logo, altText: e.target.value } })}
+                placeholder="Helios NRG"
+              />
+            </div>
+            <div>
+              <Label>Site Title</Label>
+              <Input
+                value={formData.siteTitle}
+                onChange={(e) => setFormData({ ...formData, siteTitle: e.target.value })}
+                placeholder="Helios NRG"
+              />
+            </div>
+          </div>
+        </div>
+
         {/* Primary Navigation Links */}
         <div className="rounded-sm border border-white/[0.08] bg-obsidian/50 backdrop-blur-sm p-6 shadow-sm">
           <div className="flex items-center justify-between mb-6">

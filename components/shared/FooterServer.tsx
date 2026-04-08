@@ -8,6 +8,10 @@ export default async function FooterServer() {
   const footerData = await Footer.findOne({}).lean();
 
   const defaultData = {
+    logo: {
+      imageUrl: '/images/heliosngrlogo.png',
+      altText: 'Helios NRG'
+    },
     newsletter: {
       headline: 'Stay current on energy markets.',
       subheadline: 'Monthly insights, market data, and policy updates.',
@@ -77,6 +81,7 @@ export default async function FooterServer() {
   };
 
   const data = {
+    logo: footerData?.logo || defaultData.logo,
     newsletter: footerData?.newsletter || defaultData.newsletter,
     brand: footerData?.brand || defaultData.brand,
     linkColumns: footerData?.linkColumns || defaultData.linkColumns,

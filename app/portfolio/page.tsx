@@ -21,7 +21,7 @@ export default async function PortfolioPage() {
     status: project.basicInfo?.status?.toUpperCase() || 'DEVELOPMENT',
     cod: project.basicInfo?.codDate || 'TBD',
     region: project.basicInfo?.location?.region?.toUpperCase() || 'AMERICAS',
-    image: project.media?.heroImage || 'https://placehold.co/800x600/1a1a1a/F5A623?text=Project',
+    image: project.media?.heroImage || '/images/placeholders/default.svg',
   }));
 
   return (

@@ -4,11 +4,15 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button, Input, Label, Textarea } from '@/components/ui/form-elements';
 import { Save } from 'lucide-react';
+import ImageUpload from './ImageUpload';
 
 export default function FooterEditorForm({ footer }: { footer: any }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
+    // Logo
+    logo: footer.logo || { imageUrl: '/images/heliosngrlogo.png', altText: 'Helios NRG' },
+    
     // Newsletter
     newsletterHeadline: footer.newsletter?.headline || '',
     newsletterSubheadline: footer.newsletter?.subheadline || '',
@@ -44,6 +48,7 @@ export default function FooterEditorForm({ footer }: { footer: any }) {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          logo: formData.logo,
           newsletter: {
             headline: formData.newsletterHeadline,
             subheadline: formData.newsletterSubheadline,
@@ -91,6 +96,30 @@ export default function FooterEditorForm({ footer }: { footer: any }) {
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Logo Section */}
+        <div className="rounded-sm border border-white/[0.08] bg-obsidian/50 backdrop-blur-sm p-6 shadow-sm">
+          <h2 className="text-xl font-semibold text-text-primary mb-6 font-display">Logo</h2>
+          
+          <div className="space-y-4">
+            <div>
+              <Label>Logo Image</Label>
+              <ImageUpload
+                value={formData.logo.imageUrl}
+                onChange={(url) => setFormData({ ...formData, logo: { ...formData.logo, imageUrl: url } })}
+              />
+            </div>
+            <div>
+              <Label htmlFor="logoAltText">Logo Alt Text</Label>
+              <Input
+                id="logoAltText"
+                value={formData.logo.altText}
+                onChange={(e) => setFormData({ ...formData, logo: { ...formData.logo, altText: e.target.value } })}
+                placeholder="Helios NRG"
+              />
+            </div>
+          </div>
+        </div>
+
         {/* Newsletter Section */}
         <div className="rounded-sm border border-white/[0.08] bg-obsidian/50 backdrop-blur-sm p-6 shadow-sm">
           <h2 className="text-xl font-semibold text-text-primary mb-6 font-display">Newsletter Section</h2>

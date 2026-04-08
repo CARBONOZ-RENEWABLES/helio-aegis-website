@@ -170,6 +170,7 @@ export default function PortfolioClient({ projects: allProjects }: { projects: P
                 >
                   <div className="relative h-48 bg-gradient-to-br from-slate-dark to-slate-mid overflow-hidden">
                     <Image
+                      unoptimized={project.image.endsWith('.svg')}
                       src={project.image}
                       alt={project.name}
                       fill

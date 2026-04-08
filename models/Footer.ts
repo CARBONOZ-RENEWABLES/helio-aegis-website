@@ -1,6 +1,10 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
 export interface IFooter extends Document {
+  logo: {
+    imageUrl: string;
+    altText: string;
+  };
   newsletter: {
     headline: string;
     subheadline: string;
@@ -51,6 +55,10 @@ export interface IFooter extends Document {
 }
 
 const FooterSchema = new Schema<IFooter>({
+  logo: {
+    imageUrl: { type: String, default: '/images/heliosngrlogo.png' },
+    altText: { type: String, default: 'Helios NRG' }
+  },
   newsletter: {
     headline: String,
     subheadline: String,
