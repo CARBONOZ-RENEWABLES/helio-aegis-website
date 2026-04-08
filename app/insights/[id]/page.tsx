@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: InsightPageProps): Promise<Me
   }
 
   return {
-    title: `${insight.title} | Helio Aegis Insights`,
+    title: `${insight.title} | Helios NRG Insights`,
     description: insight.excerpt,
     keywords: `${insight.category}, renewable energy, ${insight.type}`,
   };
@@ -106,7 +106,7 @@ export default async function InsightPage({ params }: InsightPageProps) {
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 pt-4 border-t border-white/[0.08]">
                 <div className="space-y-2">
                   <p className="text-sm text-text-secondary">
-                    By <span className="font-semibold">{insightData.author || 'Helio Aegis Team'}</span>
+                    By <span className="font-semibold">{insightData.author || 'Helios NRG Team'}</span>
                   </p>
                   {insightData.authorRole && (
                     <p className="text-xs text-text-muted">{insightData.authorRole}</p>

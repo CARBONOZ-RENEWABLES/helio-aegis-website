@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: InsightPageProps): Promise<Me
   }
 
   return {
-    title: `${insight.title} | Helio Aegis Insights`,
+    title: `${insight.title} | Helios NRG Insights`,
     description: insight.excerpt,
     keywords: `${insight.category}, renewable energy, ${insight.type}`,
   };

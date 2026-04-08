@@ -9,7 +9,7 @@ const categories = [
   { value: 'investors', label: 'Investors & Funds' },
   { value: 'esg', label: 'ESG & Compliance' },
   { value: 'process', label: 'Process & Timelines' },
-  { value: 'about', label: 'About Helio Aegis' }
+  { value: 'about', label: 'About Helios NRG' }
 ];
 
 export default function EditFAQForm({ faq }: { faq?: any }) {

@@ -118,7 +118,7 @@ export default function AboutPageEditorForm({ aboutPage }: { aboutPage: any }) {
                 id="eyebrowText"
                 value={formData.eyebrowText}
                 onChange={(e) => setFormData({ ...formData, eyebrowText: e.target.value })}
-                placeholder="About Helio Aegis"
+                placeholder="About Helios NRG"
               />
             </div>
             <div>
@@ -146,7 +146,7 @@ export default function AboutPageEditorForm({ aboutPage }: { aboutPage: any }) {
                 value={formData.subheadline}
                 onChange={(e) => setFormData({ ...formData, subheadline: e.target.value })}
                 rows={3}
-                placeholder="Since 2012, Helio Aegis has been..."
+                placeholder="Since 2012, Helios NRG has been..."
               />
             </div>
           </div>

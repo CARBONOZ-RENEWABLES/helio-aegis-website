@@ -16,7 +16,7 @@ export default async function FooterEditorPage() {
         successMessage: '✓ Subscribed'
       },
       brand: {
-        name: 'Helio Aegis',
+        name: 'Helios NRG',
         tagline: 'Structuring the clean energy future through integrated project management and energy finance.',
         socialLinks: [
           { platform: 'LinkedIn', icon: 'in', url: '#', order: 1 },
@@ -58,8 +58,8 @@ export default async function FooterEditorPage() {
       contact: {
         title: 'Contact',
         items: [
-          { label: 'General', value: 'info@helioaegis.com', type: 'email' },
-          { label: 'Investors', value: 'investors@helioaegis.com', type: 'email' },
+          { label: 'General', value: 'info@heliosnrg.eu', type: 'email' },
+          { label: 'Investors', value: 'investors@heliosnrg.eu', type: 'email' },
           { label: 'Phone', value: '+1 (555) 0123', type: 'phone' }
         ]
       },
@@ -76,7 +76,7 @@ export default async function FooterEditorPage() {
           { label: 'Legal Disclaimers', href: '/disclaimers' },
           { label: 'Cookie Settings', href: '#' }
         ],
-        copyrightText: '© 2025 Helio Aegis Capital Partners LLC. All rights reserved. Past performance is not indicative of future results. This website is for informational purposes only and does not constitute an offer to sell or solicitation of an offer to buy any securities.'
+        copyrightText: '© 2025 Helios NRG Capital Partners LLC. All rights reserved. Past performance is not indicative of future results. This website is for informational purposes only and does not constitute an offer to sell or solicitation of an offer to buy any securities.'
       },
       status: 'published',
       lastEditedBy: 'system'

@@ -180,7 +180,7 @@ export default function ContactPageEditorForm({ contactPage }: { contactPage: an
                         updated[idx] = { ...updated[idx], email: e.target.value };
                         setFormData({ ...formData, contactMethods: updated });
                       }}
-                      placeholder="info@helioaegis.com"
+                      placeholder="info@heliosnrg.eu"
                     />
                   </div>
                 </div>

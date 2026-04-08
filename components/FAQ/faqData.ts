@@ -21,7 +21,7 @@ export const faqItems: FAQItem[] = [
   {
     id: 'deal-sizes',
     category: 'finance',
-    question: 'What deal sizes does Helio Aegis typically advise on?',
+    question: 'What deal sizes does Helios NRG typically advise on?',
     answer: 'We advise on transactions ranging from $50M to $2B+, with a sweet spot between $200M–$800M. Our platform scales across single-asset financings, portfolio acquisitions, and large-scale refinancings. We work with sponsors of all sizes—from emerging developers to Fortune 500 corporates—and structure deals to match capital source requirements.',
     keyData: { label: 'Deal Range', value: '$50M–$2B+' },
   },
@@ -35,7 +35,7 @@ export const faqItems: FAQItem[] = [
   {
     id: 'green-bond-placement',
     category: 'finance',
-    question: 'Can Helio Aegis act as placement agent for a green bond issuance?',
+    question: 'Can Helios NRG act as placement agent for a green bond issuance?',
     answer: 'Yes. We advise on green bond structuring, investor targeting, and placement strategy. We work with issuers to navigate Use of Proceeds frameworks, impact reporting, and investor relations. Our network spans institutional fixed-income investors, ESG-focused funds, and development finance institutions across North America and Europe.',
     cta: { text: 'Explore our Energy Finance capabilities', href: '/capabilities' },
   },
@@ -63,7 +63,7 @@ export const faqItems: FAQItem[] = [
   {
     id: 'development-stage',
     category: 'development',
-    question: 'At what development stage can Helio Aegis join a project?',
+    question: 'At what development stage can Helios NRG join a project?',
     answer: 'We engage from early-stage origination through COD and beyond. We can join at pre-development, permitting, or late-stage development phases. Our involvement ranges from full project management to advisory-only roles. We also acquire and de-risk projects from other developers, then refinance or recapitalize.',
     keyData: { label: 'Engagement', value: 'Origination to COD+' },
   },
@@ -143,7 +143,7 @@ export const faqItems: FAQItem[] = [
   {
     id: 'esg-frameworks',
     category: 'esg',
-    question: 'What ESG frameworks does Helio Aegis align with?',
+    question: 'What ESG frameworks does Helios NRG align with?',
     answer: 'We align with GRESB, SASB, TCFD, and the UN SDGs. Our portfolio is measured against Science-Based Targets initiative (SBTi) criteria. We report annually on ESG metrics and maintain third-party certifications. Our investment process integrates ESG risk assessment from origination through exit.',
     keyData: { label: 'Frameworks', value: 'GRESB, SASB, TCFD, SBTi' },
   },
@@ -205,8 +205,8 @@ export const faqItems: FAQItem[] = [
   {
     id: 'company-history',
     category: 'about',
-    question: 'What is Helio Aegis\'s track record?',
-    answer: 'Helio Aegis has deployed $12B+ in capital across 18 GW of renewable capacity. Our portfolio spans 150+ projects across solar, wind, battery storage, and green hydrogen. We have achieved 98% project delivery success rate and maintained 99.2% asset availability across our portfolio. Our team brings 200+ years of combined sector experience.',
+    question: 'What is Helios NRG\'s track record?',
+    answer: 'Helios NRG has deployed $12B+ in capital across 18 GW of renewable capacity. Our portfolio spans 150+ projects across solar, wind, battery storage, and green hydrogen. We have achieved 98% project delivery success rate and maintained 99.2% asset availability across our portfolio. Our team brings 200+ years of combined sector experience.',
     keyData: { label: 'Portfolio', value: '18 GW, 150+ projects' },
   },
   {
@@ -231,38 +231,38 @@ export const categories = [
   { id: 'investors', label: 'Investors & Funds', color: 'text-hydrogen', badgeBg: '#0A1F35', badgeText: '#00C2FF' },
   { id: 'esg', label: 'ESG & Compliance', color: 'text-growth', badgeBg: '#0F2A10', badgeText: '#4ADE80' },
   { id: 'process', label: 'Process & Timelines', color: 'text-text-secondary', badgeBg: '#1E2C42', badgeText: '#8DA0B8' },
-  { id: 'about', label: 'About Helio Aegis', color: 'text-text-secondary', badgeBg: '#1E2C42', badgeText: '#8DA0B8' },
+  { id: 'about', label: 'About Helios NRG', color: 'text-text-secondary', badgeBg: '#1E2C42', badgeText: '#8DA0B8' },
 ];
 
 export const experts = {
   finance: {
     name: 'Sarah Chen',
     role: 'Head of Energy Finance',
-    email: 'sarah.chen@helioaegis.com',
+    email: 'sarah.chen@heliosnrg.eu',
   },
   development: {
     name: 'Marcus Rodriguez',
     role: 'VP Project Development',
-    email: 'marcus.rodriguez@helioaegis.com',
+    email: 'marcus.rodriguez@heliosnrg.eu',
   },
   investors: {
     name: 'James Mitchell',
     role: 'Head of Investor Relations',
-    email: 'james.mitchell@helioaegis.com',
+    email: 'james.mitchell@heliosnrg.eu',
   },
   esg: {
     name: 'Dr. Amara Okonkwo',
     role: 'ESG & Impact Director',
-    email: 'amara.okonkwo@helioaegis.com',
+    email: 'amara.okonkwo@heliosnrg.eu',
   },
   process: {
     name: 'David Park',
     role: 'Chief Operating Officer',
-    email: 'david.park@helioaegis.com',
+    email: 'david.park@heliosnrg.eu',
   },
   about: {
     name: 'Elena Vasquez',
     role: 'Chief Executive Officer',
-    email: 'elena.vasquez@helioaegis.com',
+    email: 'elena.vasquez@heliosnrg.eu',
   },
 };

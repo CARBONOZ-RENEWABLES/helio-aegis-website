@@ -75,7 +75,7 @@ export default function AdminLoginPage() {
         <div className="relative text-center">
           <div className="flex items-center justify-center gap-2 mb-2">
             <Sparkles className="h-6 w-6 text-solar" />
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-text-primary to-solar bg-clip-text text-transparent">Helio Aegis</h1>
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-text-primary to-solar bg-clip-text text-transparent">Helios NRG</h1>
           </div>
           <p className="text-sm text-text-muted font-mono">Admin Portal</p>
         </div>

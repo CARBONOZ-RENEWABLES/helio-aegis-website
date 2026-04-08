@@ -6,7 +6,7 @@ import Navigation from '@/components/shared/Navigation';
 import Footer from '@/components/shared/Footer';
 
 export const metadata: Metadata = {
-  title: 'FAQ | Helio Aegis',
+  title: 'FAQ | Helios NRG',
   description: 'Frequently asked questions about renewable energy finance, project development, investor relations, and ESG compliance.',
   keywords: 'FAQ, renewable energy, project finance, infrastructure investment, ESG',
 };

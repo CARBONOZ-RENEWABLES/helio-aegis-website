@@ -13,10 +13,10 @@ export default async function AboutPageView() {
 
   const defaultData = {
     hero: {
-      eyebrowText: 'About Helio Aegis',
+      eyebrowText: 'About Helios NRG',
       headlineLine1: 'Structuring the',
       headlineLine2: 'Clean Energy Future',
-      subheadline: 'Since 2012, Helio Aegis has been at the forefront of renewable energy project management and energy finance, structuring and delivering transformational infrastructure across North America, Europe, and Africa.'
+      subheadline: 'Since 2012, Helios NRG has been at the forefront of renewable energy project management and energy finance, structuring and delivering transformational infrastructure across North America, Europe, and Africa.'
     },
     stats: [
       { label: 'Years Active', value: '13+' },
@@ -27,7 +27,7 @@ export default async function AboutPageView() {
     story: {
       headline: 'Our Story',
       paragraphs: [
-        'Helio Aegis was founded on a simple premise: the energy transition requires more than capital. It requires integrated expertise in project development, energy finance, and institutional-grade execution.',
+        'Helios NRG was founded on a simple premise: the energy transition requires more than capital. It requires integrated expertise in project development, energy finance, and institutional-grade execution.',
         "Over the past decade, we've structured and delivered $12.4B in renewable infrastructure across 340+ projects, serving institutional investors, project developers, and government agencies worldwide.",
         'Our success is built on deep sector expertise, proprietary deal sourcing, and an unwavering commitment to delivering results for our partners.'
       ]

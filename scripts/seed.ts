@@ -103,7 +103,7 @@ async function seed() {
           trustSignal3: '96% On-Time Delivery'
         },
         seo: {
-          metaTitle: 'Helio Aegis - Renewable Energy Finance & Project Management',
+          metaTitle: 'Helios NRG - Renewable Energy Finance & Project Management',
           metaDescription: 'Leading renewable energy project management and finance company. $12B+ capital deployed across 340+ utility-scale projects.',
           ogImage: ''
         },

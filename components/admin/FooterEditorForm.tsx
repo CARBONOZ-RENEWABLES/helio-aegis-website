@@ -148,7 +148,7 @@ export default function FooterEditorForm({ footer }: { footer: any }) {
                 id="brandName"
                 value={formData.brandName}
                 onChange={(e) => setFormData({ ...formData, brandName: e.target.value })}
-                placeholder="Helio Aegis"
+                placeholder="Helios NRG"
               />
             </div>
             <div>
@@ -366,7 +366,7 @@ export default function FooterEditorForm({ footer }: { footer: any }) {
                         updated[idx] = { ...updated[idx], value: e.target.value };
                         setFormData({ ...formData, contactItems: updated });
                       }}
-                      placeholder="info@helioaegis.com"
+                      placeholder="info@heliosnrg.eu"
                       className="flex-1"
                     />
                     <select
@@ -530,7 +530,7 @@ export default function FooterEditorForm({ footer }: { footer: any }) {
                 value={formData.copyrightText}
                 onChange={(e) => setFormData({ ...formData, copyrightText: e.target.value })}
                 rows={3}
-                placeholder="© 2025 Helio Aegis Capital Partners LLC..."
+                placeholder="© 2025 Helios NRG Capital Partners LLC..."
               />
             </div>
           </div>

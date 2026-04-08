@@ -10,7 +10,7 @@ export default async function MetricsAdminPage() {
   if (!metricsData) {
     metricsData = await Metrics.create({
       sectionTitle: 'Scale built on executed deals.',
-      sectionSubtitle: 'Since 2012, Helio Aegis has structured and delivered:',
+      sectionSubtitle: 'Since 2012, Helios NRG has structured and delivered:',
       metrics: [
         { value: 12.4, prefix: '$', suffix: 'B', label: 'Capital Deployed', order: 0 },
         { value: 18.2, prefix: '', suffix: ' GW', label: 'Capacity Managed', order: 1 },

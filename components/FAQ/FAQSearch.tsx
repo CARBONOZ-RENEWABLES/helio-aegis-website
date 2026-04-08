@@ -54,7 +54,7 @@ export default function FAQSearch({ faqs, onSearch }: FAQSearchProps) {
         <div className="mt-6 p-6 bg-slate-dark border border-white/7 rounded-lg text-center">
           <p className="text-text-secondary mb-3">No results found for &quot;{query}&quot;</p>
           <a
-            href="mailto:info@helioaegis.com"
+            href="mailto:info@heliosnrg.eu"
             className="inline-flex items-center space-x-2 text-solar hover:text-solar-dim transition-colors"
           >
             <span>Contact us directly</span>

@@ -24,5 +24,8 @@ export default async function Navigation() {
     };
   }
 
-  return <NavigationClient navigation={navigation} />;
+  // Convert MongoDB objects to plain objects
+  const plainNavigation = JSON.parse(JSON.stringify(navigation));
+
+  return <NavigationClient navigation={plainNavigation} />;
 }

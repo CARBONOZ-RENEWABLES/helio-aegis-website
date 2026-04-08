@@ -56,7 +56,7 @@ export default function NavigationClient({ navigation }: { navigation: any }) {
                 <span className="text-void font-display font-bold text-xl">H</span>
               </div>
               <span className="font-display text-xl tracking-tight hidden md:block">
-                Helio Aegis
+                Helios NRG
               </span>
             </Link>
 

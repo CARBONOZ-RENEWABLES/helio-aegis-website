@@ -76,7 +76,7 @@ export function AdminSidebar({ userRole }: { userRole: string }) {
             <div className="w-10 h-10 bg-solar rounded-sm flex items-center justify-center flex-shrink-0">
               <span className="text-void font-display font-bold text-xl">H</span>
             </div>
-            <span className="font-display text-xl tracking-tight text-text-primary whitespace-nowrap">Helio Aegis</span>
+            <span className="font-display text-xl tracking-tight text-text-primary whitespace-nowrap">Helios NRG</span>
             <span className="rounded-full bg-gradient-to-r from-solar to-hydrogen px-2 py-0.5 text-xs font-semibold text-void shadow-lg shadow-solar/25">CMS</span>
           </div>
         </div>

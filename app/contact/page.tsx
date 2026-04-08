@@ -22,19 +22,19 @@ export default async function ContactPageView() {
     contactMethods: [
       {
         title: 'General Inquiries',
-        email: 'info@helioaegis.com',
+        email: 'info@heliosnrg.eu',
         phone: '+1 (212) 555-0100',
         description: 'Questions about our services and capabilities'
       },
       {
         title: 'Investor Relations',
-        email: 'investors@helioaegis.com',
+        email: 'investors@heliosnrg.eu',
         phone: '+1 (212) 555-0101',
         description: 'Fund information and investment opportunities'
       },
       {
         title: 'Project Submissions',
-        email: 'projects@helioaegis.com',
+        email: 'projects@heliosnrg.eu',
         phone: '+1 (212) 555-0102',
         description: 'Project development and partnership opportunities'
       }

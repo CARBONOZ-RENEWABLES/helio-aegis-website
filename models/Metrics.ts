@@ -7,7 +7,7 @@ const MetricsSchema = new mongoose.Schema({
   },
   sectionSubtitle: {
     type: String,
-    default: 'Since 2012, Helio Aegis has structured and delivered:'
+    default: 'Since 2012, Helios NRG has structured and delivered:'
   },
   metrics: [{
     value: { type: Number, required: true },

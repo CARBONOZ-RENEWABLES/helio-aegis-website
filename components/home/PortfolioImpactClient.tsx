@@ -36,7 +36,7 @@ export default function PortfolioImpactClient({ data }: any) {
             </span>
           </h2>
           <p className="subheadline text-text-secondary max-w-2xl mx-auto">
-            {data?.sectionSubtitle || 'Since 2012, Helio Aegis has structured and delivered:'}
+            {data?.sectionSubtitle || 'Since 2012, Helios NRG has structured and delivered:'}
           </p>
         </motion.div>
 
