@@ -1,12 +1,11 @@
 module.exports = {
   apps: [{
     name: 'helio-aegis',
-    script: 'node_modules/next/dist/bin/next',
-    args: 'start',
+    script: './start.sh',
     cwd: './',
     instances: 1,
     exec_mode: 'fork',
-    env: {
+    env_production: {
       NODE_ENV: 'production',
       PORT: 3001
     },
