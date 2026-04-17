@@ -1,20 +1,19 @@
 import { redirect } from 'next/navigation';
 import { auth } from '@/lib/auth';
 import LoginForm from './LoginForm';
-import { cookies } from 'next/headers';
 
 export default async function AdminLoginPage() {
+  let session = null;
+  
   try {
-    const session = await auth();
-
-    if (session) {
-      redirect('/admin');
-    }
+    session = await auth();
   } catch (error) {
-    // Clear invalid session cookie if JWT decryption fails
-    const cookieStore = cookies();
-    cookieStore.delete('authjs.session-token');
-    cookieStore.delete('__Secure-authjs.session-token');
+    // JWT decryption failed - ignore and show login form
+    console.log('Session validation failed, showing login form');
+  }
+
+  if (session) {
+    redirect('/admin');
   }
 
   return <LoginForm />;
