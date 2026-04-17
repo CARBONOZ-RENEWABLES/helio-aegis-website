@@ -1,53 +1,52 @@
 #!/bin/bash
 
-SERVER_IP="192.168.160.98"
-DOMAIN="helioaegis.com"
-PROJECT_DIR="/var/www/helio-aegis-website"
-PORT=3001
+# Helio Aegis Deployment Script
+# Usage: ./deploy.sh
 
-echo "🚀 Deploying Helio Aegis Website..."
+set -e
 
-# Copy Nginx config
-echo "📝 Copying Nginx configuration..."
-scp nginx-ssl.conf root@$SERVER_IP:/etc/nginx/sites-available/helioaegis
-
-# SSH and setup
-ssh root@$SERVER_IP << 'ENDSSH'
-# Enable site
-ln -sf /etc/nginx/sites-available/helioaegis /etc/nginx/sites-enabled/
-
-# Test Nginx config
-nginx -t && systemctl reload nginx
-
-# Create project directory
-mkdir -p /var/www/helio-aegis-website
-cd /var/www/helio-aegis-website
-
-# Clone or pull repository
-if [ -d ".git" ]; then
-    git pull
-else
-    git clone YOUR_GITHUB_REPO_URL .
-fi
+echo "🚀 Starting Helio Aegis deployment..."
 
 # Install dependencies
+echo "📦 Installing dependencies..."
 npm install
 
-# Build Next.js app
+# Build the application
+echo "🔨 Building Next.js application..."
 npm run build
 
-# Setup PM2
-pm2 delete helio-aegis 2>/dev/null || true
-pm2 start npm --name "helio-aegis" -- start -- -p 3001
+# Create logs directory
+mkdir -p logs
 
+# Install PM2 globally if not installed
+if ! command -v pm2 &> /dev/null; then
+    echo "📥 Installing PM2..."
+    npm install -g pm2
+fi
+
+# Stop existing process if running
+echo "🛑 Stopping existing process..."
+pm2 stop helio-aegis 2>/dev/null || true
+pm2 delete helio-aegis 2>/dev/null || true
+
+# Start the application
+echo "▶️  Starting application with PM2..."
+pm2 start ecosystem.config.js
+
+# Save PM2 process list
 pm2 save
+
+# Setup PM2 startup script
+echo "⚙️  Setting up PM2 startup..."
 pm2 startup
 
-echo "✅ Helio Aegis website deployed successfully!"
-ENDSSH
-
 echo "✅ Deployment complete!"
-echo "⚠️  Don't forget to:"
-echo "   1. Update YOUR_GITHUB_REPO_URL in this script"
-echo "   2. Generate SSL certificates: certbot certonly --nginx -d $DOMAIN -d www.$DOMAIN"
-echo "   3. Configure DNS A records to point to $SERVER_IP"
+echo ""
+echo "📊 Application status:"
+pm2 status
+echo ""
+echo "📝 Useful commands:"
+echo "  pm2 logs helio-aegis    - View logs"
+echo "  pm2 restart helio-aegis - Restart app"
+echo "  pm2 stop helio-aegis    - Stop app"
+echo "  pm2 monit               - Monitor resources"
